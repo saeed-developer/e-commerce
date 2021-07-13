@@ -2,7 +2,19 @@ import commentmodel from "../models/comment.js";
 export const comments = async (req,res)=>{
     try {
      const comment = await commentmodel.find()
-     res.status(200).json(comment)
+     const {name} = req.params
+     console.log(name)
+     for (let x of comment){
+         if (x.name == name){
+            res.status(200).json(x)
+            
+         }
+         //I should add esle
+         
+     }
+     
+        
+     
 
     }
     catch(err){
