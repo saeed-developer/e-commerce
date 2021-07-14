@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    height: 20%;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+.navlink{
+    color :yellow;
+    text-decoration: none;
+    
+}
+.navlink:hover{
+    color: black;
+    text-decoration-line: underline;
+    text-decoration-color: black ;
+    text-underline-offset: 1em;
+}
+.logo{
+   height:10% ;
+   width:10% ;
+   padding: 2% 2% 2% 0%;
+}
+.break{
+    width: 88%;
+}

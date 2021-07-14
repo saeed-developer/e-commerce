@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './header.js'
+
 const FirstPage = ()=>{
     return(
         <>
@@ -7,4 +8,4 @@ const FirstPage = ()=>{
         </>
     )
 }
-export default  FirstPage
+export default  FirstPage 
