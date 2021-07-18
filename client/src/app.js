@@ -20,7 +20,6 @@ const App = ()=>{
 return (
   <ThemeProvider theme = {Theme}>
     <StylesProvider jss={jss}> 
-      
         <Typography component={'span'} >
            <Router>
              <Switch>
@@ -33,8 +32,7 @@ return (
                <Route path = '/مقالات' component = {ArticlesPage} /> 
              </Switch>
            </Router> 
-       </Typography>
-      
+       </Typography>  
     </StylesProvider > 
   </ThemeProvider >
     

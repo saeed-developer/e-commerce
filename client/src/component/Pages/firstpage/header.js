@@ -1,11 +1,9 @@
 /* eslint-disable no-restricted-globals */
 import { useState } from 'react';
 import {Link} from 'react-router-dom'
-import './styles.css'
 import logo from './../../../images/Logo-Shadnak.png' 
 import MenuIcon from './../../../images/menu-icon.png'
 import {useMediaQuery} from 'react-responsive';
-import  './styles.js';
 import { DesktopNav ,MobileNav,ShowMenu } from './styles.js'; //Maybe I shoud use dynamic redering for speed-up loading
 //import FetchData from './../../../api.js'
 //First I decided to use materil-ui but it was  messy and i didn't like it
@@ -17,7 +15,7 @@ const Header = ()=>{
     }
   }
   const isMobile = useMediaQuery(
-    { maxDeviceWidth: 708 }, undefined,handleMediaQueryChange
+    { maxDeviceWidth: 768 }, undefined,handleMediaQueryChange
   );
    const content = (
     <header className='container' >

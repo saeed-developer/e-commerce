@@ -84,5 +84,19 @@ export const ShowMenu = styled.section`
      display : inline;
      padding-top :5%;
 }
+`
+export const Slideshow = styled.section`
+.container{
+    display:flex
+    height : 100;
+    color : blue;
+    background-color : black;
+}
+.img{
+    width : 100%;
+    height : 100%
+}
+
+
 
 `
