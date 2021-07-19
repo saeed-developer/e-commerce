@@ -25,6 +25,7 @@ const SlideShow = () => {
 return (
 <div className = 'slider-wrapper'> 
  <Slider {...settings} >
+     
   <div className="slick-slide">
   <img className="slick-slide-image" src={one} alt = 'گل زعفران' />
   <label className="slick-slide-label">گل زعفران</label>
@@ -51,8 +52,10 @@ return (
       خرید آنلاین
      </Link>
   </button>
-  </div>            
- </Slider>                         
-</div>
+  </div>   
+         
+ </Slider>  
+    </div>                      
+
  )}
 export default SlideShow
