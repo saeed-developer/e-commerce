@@ -3,20 +3,17 @@ import { useState } from 'react';
 import {Link} from 'react-router-dom'
 import logo from './../../../images/Logo-Shadnak.png' 
 import MenuIcon from './../../../images/menu-icon.png'
-import {useMediaQuery} from 'react-responsive';
+import { useMedia } from 'react-use';
 import { DesktopNav ,MobileNav,ShowMenu } from './styles.js'; //Maybe I shoud use dynamic redering for speed-up loading
 //import FetchData from './../../../api.js'
 //First I decided to use materil-ui but it was  messy and i didn't like it
 const Header = ()=>{ 
    const[open , setOpen]=useState(false)
-   const handleMediaQueryChange = ()=> {
-    if(isMobile === false && open === true){
-      setOpen(prev => prev = false)
-    }
+   const isMobile = useMedia('(max-width: 768px)');
+   console.log(isMobile)
+   if(isMobile === false && open === true){
+    setOpen(prev => prev = false)
   }
-  const isMobile = useMediaQuery(
-    { maxDeviceWidth: 768 }, undefined,handleMediaQueryChange
-  );
    const content = (
     <header className='container' >
     <img src ={logo} alt ='لوگو شادناک' className = 'logo' ></img>
