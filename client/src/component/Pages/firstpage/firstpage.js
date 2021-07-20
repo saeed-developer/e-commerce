@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from './header.js'
 import SlideShow from './slideshow.js'
-import Scroll from '../../Packages/scroll.js'
+import PrimaryContent from './content.js'
 const FirstPage = ()=>{
 
 
@@ -9,9 +9,7 @@ const FirstPage = ()=>{
         <>
         <Header />
         <SlideShow/>
-        <Scroll  heighttoshow = {100} />
-        
-        
+        <PrimaryContent/>
         </>
     )
 }

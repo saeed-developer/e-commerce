@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 import './styles.css'
 const SlideShow = () => {
     const settings = {
+      
        slidesToScroll:1,
        slidesToShow:1,
        speed: 1000,
