@@ -17,8 +17,6 @@ body{
   .slick-slide:focus {
     outline: none;
   }
-  
-  
   .slick-slide-image {
     
     width: inherit;
@@ -75,7 +73,7 @@ body{
  display: flex;
  justify-content: space-around;
  align-content: center;
- padding-top:5% ;
+ padding-top:8% ;
  max-width: 100%;
  max-height: 100vh;
  text-align: center;
@@ -95,7 +93,7 @@ body{
   font-size: 3vmax;
   
 }
-@media (max-width :768px) {
+@media (max-width :768px ) and (orientation:portrait) {
   .primarycontent{
     flex-direction: column;
     justify-content: center;
