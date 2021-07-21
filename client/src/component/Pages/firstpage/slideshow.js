@@ -1,17 +1,16 @@
 //this component is work but it's not responsive so I should change css code and maybe rewrite it!
-import React from 'react'
+import {React} from 'react';
 import Slider from "react-slick";
-import './../../../../node_modules/slick-carousel/slick/slick.css'
+import './../../../../node_modules/slick-carousel/slick/slick.css';
 import "./../../../../node_modules/slick-carousel/slick/slick-theme.css";
-import './styles.css'
-import one from './../../../images/saffron-flower.jpg'
-import two from './../../../images/zereshk-branch.jpg'
-import three from './../../../images/saffron-sargol.jpg'
+import './styles.css';
+import one from './../../../images/saffron-flower.jpg';
+import two from './../../../images/zereshk-branch.jpg';
+import three from './../../../images/saffron-sargol.jpg';
 import { Link } from 'react-router-dom';
 import './styles.css'
-const SlideShow = () => {
-    const settings = {
-      
+export const SlideShow = () => {
+    const settings = {  
        slidesToScroll:1,
        slidesToShow:1,
        speed: 1000,
@@ -23,7 +22,7 @@ const SlideShow = () => {
        swipeToSlide: true, 
     }; 
 return (
-<div className = 'slider-wrapper'> 
+<div  className = 'slider-wrapper'> 
  <Slider {...settings} >
      
   <div className="slick-slide">
@@ -58,4 +57,4 @@ return (
     </div>                      
 
  )}
-export default SlideShow
+

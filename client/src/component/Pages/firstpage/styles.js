@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 export const DesktopNav = styled.section`.container{
+    direction:rtl;
     display: flex;
     height: 20%;
     width: 100%;

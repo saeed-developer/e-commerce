@@ -13,7 +13,7 @@ import AccountPage from './component/Pages/accountpage.js/accountpage.js';
 import CartPage from './component/Pages/cartpage/cartpage.js';
 import Theme from './assets/CustomTheme.js';
 //import './assets/Font/css/fontiran.css'
-//import './assets/Font/css/style.css'
+import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{

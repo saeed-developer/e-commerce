@@ -10,7 +10,6 @@ import { DesktopNav ,MobileNav,ShowMenu } from './styles.js'; //Maybe I shoud us
 const Header = ()=>{ 
    const[open , setOpen]=useState(false)
    const isMobile = useMedia('(max-width: 768px)');
-   console.log(isMobile)
    if(isMobile === false && open === true){
     setOpen(prev => prev = false)
   }
