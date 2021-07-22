@@ -68,8 +68,8 @@ body{
   cursor: pointer;
   }
 .primarycontent{
+ opacity: 0;
  direction: rtl;
- opacity :0;
  display: flex;
  justify-content: space-around;
  align-content: center;
@@ -105,7 +105,6 @@ body{
   }
 }
 .seconderycontent{
-  opacity: 0;
   direction:rtl;
   display: flex;
   flex-direction: column;
@@ -138,7 +137,7 @@ color: #e1bb23;
 cursor: pointer;
 }
 .seconderycontent2{
-  opacity:0 ;
+  opacity: 0;
   margin-top: 2%;
   position: relative;
   width: 100%;

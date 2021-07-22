@@ -1,26 +1,28 @@
-import {React ,useRef} from 'react';
+import {React ,useRef,useState} from 'react';
 import Garden from './../../../images/zereshk-tree.jpg';
 import {useIntersection} from 'react-use';
-
 import gsap from 'gsap';
 export const PrimaryContent = () => {
     const sectionRef = useRef(null)
-    const intersection = useIntersection(sectionRef,{
+    let intersection = useIntersection(sectionRef,{
       root : null,
       rootMargin : '0px',
       threshold: 0.5
     })
     const fadeIn = elem=>{
-      gsap.to(elem,2,{
+      gsap.to(elem,{
+        duration:2,
         opacity:1,
-        y: -60,
         ease:'power4.out',
         stagger:{
           amount:0.3
         }
     })}
-    intersection && intersection.intersectionRatio> 0.5 &&
-     fadeIn('.primarycontent')
+    const [animation ,setAnimation] = useState(false)
+    if(intersection && intersection.intersectionRatio> 0.5 && !animation) //I didn't find way to remove inter section so i used this
+     {fadeIn('.primarycontent')
+     setAnimation(prev => prev = true)
+    }
     return (
           <div ref = {sectionRef} className = 'primarycontent'  >       
           <p  className = 'content-paragraph'>  خرید زرشک و زعفران بدون واسطه از کشاورزان قاینات  </p>
@@ -28,14 +30,12 @@ export const PrimaryContent = () => {
         </div>   
     )
 }
-
-
 export const SeconderyContent = () => {
   const sectionRef = useRef(null)
   const intersection = useIntersection(sectionRef,{
     root : null,
     rootMargin : '0px',
-    threshold: .9
+    threshold: .5
   })
   const sectionRef2 = useRef(null)
   const intersection2 = useIntersection(sectionRef2,{
@@ -44,18 +44,38 @@ export const SeconderyContent = () => {
     threshold: .5
   })
   const fadeIn = elem=>{
-    gsap.to(elem,2,{
+    gsap.from(elem,{
+      duration:2,
       opacity:1,
-      y: -60,
-      ease:'power4.out',
+       x:100,
+       ease:'power4.out',
       stagger:{
-        amount:0.3
+        amount:.3
       }
+     
   })}
-  intersection && intersection.intersectionRatio> .9 &&
+
+  const fadeIn2 = elem=>{
+    gsap.to(elem,{
+      duration:2,
+      opacity:1,
+       ease:'power4.out',
+      stagger:{
+        amount:.3
+      }
+     
+  })}
+  const [animation ,setAnimation] = useState(false)
+  const [animation2 ,setAnimation2] = useState(false)
+  if(intersection && intersection.intersectionRatio> .5 && !animation){
   fadeIn('.seconderycontent')
-  intersection2 && intersection2.intersectionRatio> .5 &&
-  fadeIn('.seconderycontent2')
+  setAnimation(prev => prev = true)
+ 
+  }
+  if(intersection2 && intersection2.intersectionRatio> .5 && !animation2 )
+  {fadeIn2('.seconderycontent2')
+  setAnimation2(prev => prev = true)
+}
   return ( 
     <>
     <div ref = {sectionRef} className = 'seconderycontent'>
