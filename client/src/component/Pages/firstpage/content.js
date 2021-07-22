@@ -54,7 +54,6 @@ export const SeconderyContent = () => {
       }
      
   })}
-
   const fadeIn2 = elem=>{
     gsap.to(elem,{
       duration:2,
@@ -84,15 +83,21 @@ export const SeconderyContent = () => {
       <button> اطلاعات بیشتر</button>  
     </div >
     <div ref = {sectionRef2} className = 'seconderycontent2' >
-    <div> نظر خریداران</div>
-    
-    <div>علی</div>
-   
-    
+      <div> نظر خریداران</div>
       <div>
-        
-        چمنی</div> 
-     
+        <p> 
+           من استفاده کردم خیلی بی‌نظیر بود و از زعفرون ایی که قبلا از بازار میخریدم کیفیتش بیشتر بود
+        </p>
+        <p>
+      واقعا نسبت به قیمتی که میدید بسیار کیفیت بالایی داره 
+        </p> 
+        <div className = 'br'></div>
+      <div >
+         علی
+      </div> <div style = {{width:'30%'}}></div> <div >
+         چمنی
+       </div>
+     </div>
     </div>
     </>
   )

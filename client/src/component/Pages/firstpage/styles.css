@@ -1,3 +1,15 @@
+:root{
+--green:#2FE92B;
+--black:#0F0F0F;
+--yellow:#e1bb23;
+--red:#c92228;
+}
+p{
+  color:var(--black)
+}
+div{
+  color:var(--black)
+}
 body{
   padding: 8px 0px;
   margin: 8px 0px;
@@ -26,7 +38,7 @@ body{
   }
   .slick-slide-label { 
     
-    color: black;
+    color: var(--black);
     position: absolute;
     font-size: 4vmax;
     bottom: 0;
@@ -40,7 +52,7 @@ body{
     color: rgb(115, 115, 121)
   }
   .slick-slide-label-2 { 
-    color: black;
+    color:  var(--black);
     position: absolute;
     font-size: 3vmax;
     bottom: 0;
@@ -52,15 +64,15 @@ body{
   }
   .btn { 
     
-    color: black;
+    color:  var(--black);
     position: absolute;
     left: 35%;
     font-size: 3vmax;
     bottom: 20%;
     width: 20%;
-    border : 3px solid black;
+    border : 3px solid  var(--black);
     border-radius: 40%;
-    background-color: #2FE92B;
+    background-color: var(--green)
     
   } 
   .btn:hover{
@@ -86,7 +98,7 @@ body{
 .content-paragraph{
   padding:  2%;
   margin-top: 10%;
-  border: 5px solid #2FE92B;
+  border: 5px solid var(--green);
   width: 20%;
   height: 40%;
   padding-right: 5%;
@@ -125,46 +137,54 @@ font-size: 2vmax;
 }
 .seconderycontent :nth-child(3){
   color: white;
-  border:3px solid #2FE92B;
+  border:3px solid var(--green);
   font-size: 2vmax;
   width: 20%;
-  background-color: #2FE92B ;
+  background-color: var(--green);
   margin-right: 50%;
 }
 .seconderycontent :nth-child(3):hover{
 background-color: inherit;
-color: #e1bb23;
+color: var(--yellow);
 cursor: pointer;
 }
 .seconderycontent2{
   opacity: 0;
-  margin-top: 2%;
-  position: relative;
-  width: 100%;
-  height: 100vh;
   background-image: url(../../../images/shadnak-background.jpg);  
-  background-repeat: no-repeat;
+   display: flex; 
+   flex-direction: column; 
+   text-align: center;
+   justify-content: space-around;
+   align-self: center;
+   height: 100vh;
+   width: 100%;
+   padding: 0;
+   margin-top: 2%;
+   background-repeat: no-repeat;
+ 
 }
-.seconderycontent2 :first-child{
-font-size :3vmax;
-margin-top:10%;
-width:100%;
-text-align: center;
+.seconderycontent2 > :first-child{
+  font-size: 3vmax;
 }
-.seconderycontent2 :nth-child(2){
-  position: absolute;
-  width: 40%;
-  margin-left: 10%;
-  margin-top: 20%;
-  background-color: white;
+.seconderycontent2 :nth-child(2) {
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
   text-align: center;
+  justify-content:center
 }
-.seconderycontent2 :nth-child(3){
-  text-align: center;
-  position: absolute;
-  width: 40%;
-  margin-left: 50%;
-  margin-top: 20%;
+.seconderycontent2 :nth-child(2) p{
+  direction: rtl;
   background-color: white;
+  max-width: 30vw;
+  height: auto;
+  font-size: 2vmax;
+}
+.seconderycontent2 :nth-child(2) div{
+  direction: rtl;
+  font-size: 1vmax;
+}
+.br{
+  width: 100%;
 }
 
