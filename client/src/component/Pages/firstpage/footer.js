@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-no-target-blank */
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Instagram from './../../../images/instagram.svg'
 const Footer = () => {
 
      return(
         <footer className = 'footer'>
         <div className = 'footersitems' id = 'footeritem1'>
         <p>
-           ددساعات پشتیبانی فروشگاه اینترنتی شادناک
+           ساعات پشتیبانی فروشگاه اینترنتی شادناک
            <br />
             همه روزه از ساعت ۸ صبح تا ۲۰ شب 
              <br />
@@ -19,29 +20,36 @@ const Footer = () => {
         </p>
         </div>
         <div className = 'footersitems' id = 'footeritem2'>
-        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz">
-        <img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz" alt=
+        <a referrerPolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz">
+        <img referrerPolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz" alt=
         "" style={{cursor:"pointer"}} id="LKIQIYX8G2IPpD3NV2dz" />
         </a>  {/*some promblem here..*/}
         <img id = 'nbqenbqewlaonbqeapfunbqe' style = {{coursor:'pointer'}} alt=
         '' src = 'https://logo.samandehi.ir/logo.aspx?id=224252&p=odrfodrfshwlodrfujy' />
-        </div>
+          <a href = 'https://www.instagram.com/saffron_shadnak/'><img  src ={Instagram} alt = 'instaicon'/></a>
+          <p>
+          شادناک را در اینستاگرام دنبال کنید 
+          </p>
+        </div> 
         <div className = 'footersitems' id = 'footeritem3'>
-        <p style = {{fontSize : '1.2vmax'}}>
+        <p>
         در خبرنامه عضو شوید تا از تخفیف های ویژه و محصولات جدید مطلع شوید
         </p>
-        <input type = 'email' placeholder = 'ایمیل خود را بنویسید'></input>
+        <input  type = 'email' placeholder = 'ایمیل خود را بنویسید'></input>
         <br />
-        <button type="submit" >ثبت نام </button>
-        
+        <button className = 'footerbtn' type="submit" >ثبت نام </button>
         </div>
         <div className = 'footersitems' id = 'footeritem4'>
-            <p style = {{fontSize : '1.2vmax'}}>درباره خرید کردن راهنمایی میخوای؟</p>
-            <Link to = '/راهنمای-خرید' style = {{textDecoration:'none',color:'#e1bb23'  , fontSize: '1.2vmax' ,cursor:'pointer'}} > 
+            <p >درباره خرید کردن راهنمایی میخوای؟</p>
+            <Link to = '/راهنمای-خرید'  > 
             برو به صفحه راهنمای خرید
             </Link>
         </div>
-        <div className = 'footersitems' id = 'footeritem5'>5</div>
+        <div className = 'footersitems' id = 'footeritem5'>
+            <hr></hr>
+            <small>&copy;2021 shadnak</small>
+            <p> کلیه حقوق این وبسایت برای شادناک محفوظ است</p>
+        </div>
         </footer>
      )
 }
