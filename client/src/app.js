@@ -10,6 +10,7 @@ import ArticlesPage from './component/Pages/articles/articlespage.js';   // for 
 import AboutPage from './component/Pages/aboutpage.js/aboutpage.js';
 import AccountPage from './component/Pages/accountpage.js/accountpage.js';
 import CartPage from './component/Pages/cartpage/cartpage.js';
+import Guidepage from './component/Pages/guidepage/guidepage.js';
 import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
@@ -28,6 +29,7 @@ return (
                <Route path = '/سبد-خرید' component = {CartPage} /> [301 redirect from my-account]
                <Route path = '/حساب-کاربری' component = {AccountPage} /> 
                <Route path = '/مقالات' component = {ArticlesPage} /> 
+               <Route path = '/راهنمای-خرید' component = {Guidepage}/>
              </Switch>
            </Router> 
        </Typography>  
