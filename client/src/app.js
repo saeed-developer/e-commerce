@@ -33,8 +33,8 @@ return (
              </Switch>
            </Router> 
        </Typography>  
-    </StylesProvider > 
-  </ThemeProvider >
+    </StylesProvider> 
+  </ThemeProvider>
     
          
 )

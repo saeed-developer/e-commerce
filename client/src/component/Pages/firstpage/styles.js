@@ -11,7 +11,7 @@ export const DesktopNav = styled.section`.container{
 
 
 .navlink{
-    color :yellow;
+    color :#e1bb23;
     text-decoration: none;
     &:hover{
         color: black;
@@ -48,7 +48,7 @@ export  const MobileNav = styled.section`.container{
 
 .navlink{
     display : none;
-    color :yellow;
+    color :#e1bb23;
     text-decoration: none;
     &:hover{
         color: black;

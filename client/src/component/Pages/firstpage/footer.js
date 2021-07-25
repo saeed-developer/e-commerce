@@ -11,7 +11,7 @@ const Footer = () => {
            ساعات پشتیبانی فروشگاه اینترنتی شادناک
            <br />
             همه روزه از ساعت ۸ صبح تا ۲۰ شب 
-             <br />
+            <br />
             شماره تماس پشتیبانی : <a href = 'tel:۰۹۱۵۲۶۴۰۵۳۷' style = {{textDecoration:'none' , color:'#e1bb23' }}> ۰۹۱۵۲۶۴۰۵۳۷</a>
             <br />
             ایمیل پشتیبانی: <a href="mailto:shadnakshop@gmail.com" style = {{textDecoration:'none' , color : '#e1bb23' }}>shadnakshop@gmail.com</a>

@@ -24,7 +24,7 @@ export const SlideShow = () => {
 return (
 <div  className = 'slider-wrapper'> 
  <Slider {...settings} >
-     
+    { /* این بخش به بک اند متصل میشود و این که از جی اس برای تولید اتوماتیک و کاهش لاین کد استفاده خواهم کرد */} 
   <div className="slick-slide">
   <img className="slick-slide-image" src={one} alt = 'گل زعفران' />
   <label className="slick-slide-label">گل زعفران</label>
@@ -32,7 +32,7 @@ return (
   <button className = 'btn'><Link style = {{color : 'black',textDecoration:'none'}} to = '/مقالات ' >
       خرید آنلاین
       </Link>
-    </button>
+    </button> 
   </div>
   <div className="slick-slide">
   <img className="slick-slide-image" src={two} alt = 'درخت زرشک' />

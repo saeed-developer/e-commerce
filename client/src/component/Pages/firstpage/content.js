@@ -69,7 +69,6 @@ export const SeconderyContent = () => {
   if(intersection && intersection.intersectionRatio> .5 && !animation){
   fadeIn('.seconderycontent')
   setAnimation(prev => prev = true)
- 
   }
   if(intersection2 && intersection2.intersectionRatio> .5 && !animation2 )
   {fadeIn2('.seconderycontent2')
@@ -81,23 +80,21 @@ export const SeconderyContent = () => {
       <p > درباره ما</p>
       <p> ما برآنیم که محصولات درجه یک قائنات را بدون واسطه از کشاورز بدست شما  برسانیم </p>
       <button> اطلاعات بیشتر</button>  
-    </div >
+    </div>
     <div ref = {sectionRef2} className = 'seconderycontent2' >
       <div> نظر خریداران</div>
+      {/* کامنت ها باید از دیتابیس گرفته شود و این که از جی اس برای تولید تگ استفاده کنم */}
       <div>
-        <p> 
-           من استفاده کردم خیلی بی‌نظیر بود و از زعفرون ایی که قبلا از بازار میخریدم کیفیتش بیشتر بود
-        </p>
-        <p>
-      واقعا نسبت به قیمتی که میدید بسیار کیفیت بالایی داره 
-        </p> 
-        <div className = 'br'></div>
-      <div >
-         علی
-      </div> <div style = {{width:'30%'}}></div> <div >
+        <div> 
+           <p>من استفاده کردم خیلی بی‌نظیر بود و از زعفرون ایی که قبلا از بازار میخریدم کیفیتش بیشتر بود </p>
+          علی
+        </div>
+        <div>
+          <p> واقعا نسبت به قیمتی که میدید بسیار کیفیت بالایی داره </p> 
+          <div style = {{width:'100%'}}></div>
          چمنی
-       </div>
-     </div>
+        </div> 
+      </div>
     </div>
     </>
   )

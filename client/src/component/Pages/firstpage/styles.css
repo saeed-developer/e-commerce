@@ -10,7 +10,6 @@ p{
 div{
   color:var(--black)
 }
-
 body{
   padding: 8px 0px;
   margin: 8px 0px;
@@ -50,7 +49,9 @@ body{
   }
   .slick-prev:before,
   .slick-next:before {
-    color: rgb(115, 115, 121)
+    color: rgb(115, 115, 121);
+    
+    
   }
   .slick-slide-label-2 { 
     color:  var(--black);
@@ -64,7 +65,6 @@ body{
     
   }
   .btn { 
-    
     color:  var(--black);
     position: absolute;
     left: 35%;
@@ -79,6 +79,12 @@ body{
   .btn:hover{
   background-color: inherit;
   cursor: pointer;
+  }
+  @media (max-width:768px) {
+    .slick-prev:before,
+    .slick-next:before{
+    display: none;
+  }
   }
 .primarycontent{
  opacity: 0;
@@ -97,13 +103,13 @@ body{
   height: auto;
 }
 .content-paragraph{
-  padding:  2%;
-  margin-top: 10%;
+  text-align: center;
+  margin-top: 15%;
   border: 5px solid var(--green);
   width: 20%;
   height: 40%;
-  padding-right: 5%;
   font-size: 3vmax;
+  padding: 2%;
   
 }
 @media (max-width :768px ) and (orientation:portrait) {
@@ -150,8 +156,8 @@ color: var(--yellow);
 cursor: pointer;
 }
 .seconderycontent2{
-  opacity: 0;
-  background-image: url(../../../images/shadnak-background.jpg);  
+   opacity: 0;
+   background-image: url(../../../images/shadnak-background.jpg);  
    display: flex; 
    flex-direction: column; 
    text-align: center;
@@ -180,13 +186,16 @@ cursor: pointer;
   max-width: 30vw;
   height: auto;
   font-size: 2vmax;
+  padding: 10%;
 }
 .seconderycontent2 :nth-child(2) div{
   direction: rtl;
   font-size: 1vmax;
 }
-.br{
-  width: 100%;
+@media (max-width:768px) and (orientation: portrait){
+  .seconderycontent2 :nth-child(2){
+    flex-direction:column;
+  }
 }
 .footer{
   direction: rtl;
@@ -299,16 +308,18 @@ float: right;
     }
 
       .footerbtn{
+        padding-top: 1%;
         width: 100%;
         font-size: 2.5vmax;
+        
       }
       #footeritem3 :nth-child(2){
-        width: 80%;
-        font-size: 1.8vmax;
+        width: 97%;
+        font-size: 2.5vmax;
       }
       #footeritem3 :first-child{
       
-        font-size: 2vmax;
+        font-size: 2.5vmax;
       }
       #footeritem2 :last-child{
        font-size: 3vmax;
