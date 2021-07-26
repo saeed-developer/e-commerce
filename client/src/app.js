@@ -1,26 +1,27 @@
-import React from 'react'
+import React,{Suspense} from 'react'
 import {BrowserRouter as Router ,Route,Switch} from 'react-router-dom'
 import { create } from 'jss';
 import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset,ThemeProvider } from '@material-ui/core/styles';
-import FirstPage from './component/Pages/firstpage/firstpage.js';
-import ShopPage from './component/Pages/shoppage/shoppage.js';
-import ContactPage from './component/Pages/contactpage/contactpage.js';
-import ArticlesPage from './component/Pages/articles/articlespage.js';   // for speed-up loading I should use dynamic import
-import AboutPage from './component/Pages/aboutpage.js/aboutpage.js';
-import AccountPage from './component/Pages/accountpage.js/accountpage.js';
-import CartPage from './component/Pages/cartpage/cartpage.js';
-import Guidepage from './component/Pages/guidepage/guidepage.js';
 import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
+const FirstPage = React.lazy(()=>import ('./component/Pages/firstpage/firstpage.js'))
+const ShopPage = React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js'));
+const ArticlesPage = React.lazy(()=> import ('./component/Pages/articles/articlespage.js'));
+const AboutPage = React.lazy(()=> import ('./component/Pages/aboutpage/aboutpage.js'));
+const AccountPage = React.lazy(()=> import('./component/Pages/accountpage/accountpage.js')); 
+const CartPage = React.lazy(()=> import('./component/Pages/cartpage/cartpage.js'))
+const Guidepage = React.lazy(()=> import('./component/Pages/guidepage/guidepage.js')); 
+const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js'))
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{
-return (
+return ( 
   <ThemeProvider theme = {Theme}>
     <StylesProvider jss={jss}> 
-        <Typography component={'span'} >
-           <Router>
+      <Typography component={'span'} >
+        <Router>
+           <Suspense fallback= {<div>منتظر بمانید </div>}>
              <Switch>
                <Route path = '/' component = {FirstPage}  exact/> 
                <Route path = '/فروشگاه-شادناک' component = {ShopPage} />  
@@ -31,10 +32,12 @@ return (
                <Route path = '/مقالات' component = {ArticlesPage} /> 
                <Route path = '/راهنمای-خرید' component = {Guidepage}/>
              </Switch>
-           </Router> 
-       </Typography>  
-    </StylesProvider> 
+            </Suspense> 
+        </Router> 
+      </Typography>
+    </StylesProvider>
   </ThemeProvider>
+     
     
          
 )
