@@ -6,6 +6,7 @@ import { StylesProvider, jssPreset,ThemeProvider } from '@material-ui/core/style
 import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
+import Waiting from './waiting.js';
 const FirstPage = React.lazy(()=>import ('./component/Pages/firstpage/firstpage.js'))
 const ShopPage = React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js'));
 const ArticlesPage = React.lazy(()=> import ('./component/Pages/articles/articlespage.js'));
@@ -21,7 +22,8 @@ return (
     <StylesProvider jss={jss}> 
       <Typography component={'span'} >
         <Router>
-           <Suspense fallback= {<div>منتظر بمانید </div>}>
+         
+           <Suspense fallback= {Waiting}>
              <Switch>
                <Route path = '/' component = {FirstPage}  exact/> 
                <Route path = '/فروشگاه-شادناک' component = {ShopPage} />  
@@ -33,6 +35,7 @@ return (
                <Route path = '/راهنمای-خرید' component = {Guidepage}/>
              </Switch>
             </Suspense> 
+          
         </Router> 
       </Typography>
     </StylesProvider>

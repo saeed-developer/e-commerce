@@ -21,8 +21,6 @@ export const DesktopNav = styled.section`.container{
     }
     
 }
-
-
 .logo{
    height:10% ;
    width:10% ;
@@ -86,18 +84,7 @@ export const ShowMenu = styled.section`
      padding-top :5%;
 }
 `
-export const Slideshow = styled.section`
-.container{
-    display:flex
-    height : 100;
-    color : blue;
-    background-color : black;
-}
-.img{
-    width : 100%;
-    height : 100%
-}
 
 
 
-`
+
