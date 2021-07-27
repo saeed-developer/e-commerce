@@ -7,7 +7,8 @@ import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
 import Waiting from './waiting.js';
-/*the approach below is not SSR for ssr aproach  loadable/component should be used 
+
+/*the approach below is not SSR for ssr aproach  next js shoud be used
 also if i using babel need plugin to installed
 */
 import Api from './api/api.js'
