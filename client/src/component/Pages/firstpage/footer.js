@@ -20,12 +20,12 @@ const Footer = () => {
         </p>
         </div>
         <div className = 'footersitems' id = 'footeritem2'>
-        <a referrerPolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz">
+        {/*<a referrerPolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz">
         <img referrerPolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=204635&amp;Code=LKIQIYX8G2IPpD3NV2dz" alt=
         "" style={{cursor:"pointer"}} id="LKIQIYX8G2IPpD3NV2dz" />
-        </a>  {/*some promblem here..*/}
+        </a>  
         <img id = 'nbqenbqewlaonbqeapfunbqe' style = {{coursor:'pointer'}} alt=
-        '' src = 'https://logo.samandehi.ir/logo.aspx?id=224252&p=odrfodrfshwlodrfujy' />
+        '' src = 'https://logo.samandehi.ir/logo.aspx?id=224252&p=odrfodrfshwlodrfujy' />*/}
           <a href = 'https://www.instagram.com/saffron_shadnak/'><img  src ={Instagram} alt = 'instaicon'/></a>
           <p>
           شادناک را در اینستاگرام دنبال کنید 

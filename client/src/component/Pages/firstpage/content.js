@@ -2,13 +2,18 @@ import {React ,useRef,useState} from 'react';
 import Garden from './../../../images/zereshk-tree.jpg';
 import {useIntersection} from 'react-use';
 import gsap from 'gsap';
+//this approcah is not efficient and has to major problem 
+//1-in first mount intersction call to render about 4 times
+//2-after first observer it continue to observe
+//solution is : using hook and using native approche for oberving
 export const PrimaryContent = () => {
     const sectionRef = useRef(null)
     let intersection = useIntersection(sectionRef,{
       root : null,
       rootMargin : '0px',
-      threshold: 0.5
-    })
+      threshold: 0.5,
+      freezeOnceVisible:true,
+    }) 
     const fadeIn = elem=>{
       gsap.to(elem,{
         duration:2,
