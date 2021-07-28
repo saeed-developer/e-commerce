@@ -7,7 +7,9 @@ import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
 import Waiting from './waiting.js';
-
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { increment  } from './features/comments/commentSlice.js';
 /*the approach below is not SSR for ssr aproach  next js shoud be used
 also if i using babel need plugin to installed
 */
@@ -19,12 +21,16 @@ const AboutPage = React.lazy(()=> import ('./component/Pages/aboutpage/aboutpage
 const AccountPage = React.lazy(()=> import('./component/Pages/accountpage/accountpage.js')); 
 const CartPage = React.lazy(()=> import('./component/Pages/cartpage/cartpage.js'))
 const Guidepage = React.lazy(()=> import('./component/Pages/guidepage/guidepage.js')); 
-const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js'))
+const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js'));
+
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{
+ const  dispatch = useDispatch()
+ dispatch(increment())
   
-     const api =  Api
-   
+    const api = Api 
+    const count = useSelector(state => state.counter.value)
+   console.log(count)
 return ( 
   <ThemeProvider theme = {Theme}>
     <StylesProvider jss={jss}> 
