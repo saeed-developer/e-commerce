@@ -1,19 +1,14 @@
-import {React ,useRef,useState} from 'react';
+import {React} from 'react';
 import Garden from './../../../images/zereshk-tree.jpg';
-import {useIntersection} from 'react-use';
+import { useInView  } from 'react-intersection-observer';
 import gsap from 'gsap';
-//this approcah is not efficient and has to major problem 
-//1-in first mount intersction call to render about 4 times
-//2-after first observer it continue to observe
-//solution is : using hook and using native approche for oberving
 export const PrimaryContent = () => {
-    const sectionRef = useRef(null)
-    let intersection = useIntersection(sectionRef,{
+  const { ref, inView } = useInView(
+    {
       root : null,
-      rootMargin : '0px',
       threshold: 0.5,
-      freezeOnceVisible:true,
-    }) 
+      triggerOnce:true,
+    })
     const fadeIn = elem=>{
       gsap.to(elem,{
         duration:2,
@@ -23,31 +18,30 @@ export const PrimaryContent = () => {
           amount:0.3
         }
     })}
-    const [animation ,setAnimation] = useState(false)
-    if(intersection && intersection.intersectionRatio> 0.5 && !animation) //I didn't find way to remove inter section so i used this
-     {fadeIn('.primarycontent')
-     setAnimation(prev => prev = true)
-    }
+    inView&&
+      fadeIn('.primarycontent')
+       
     return (
-          <div ref = {sectionRef} className = 'primarycontent'  >       
+          <div ref = {ref} className = 'primarycontent'  >       
           <p  className = 'content-paragraph'>  خرید زرشک و زعفران بدون واسطه از کشاورزان قاینات  </p>
           <img className = 'content-image' src = {Garden} alt = 'باغ-زرشک-شادناک'/>  
         </div>   
     )
 }
 export const SeconderyContent = () => {
-  const sectionRef = useRef(null)
-  const intersection = useIntersection(sectionRef,{
-    root : null,
-    rootMargin : '0px',
-    threshold: .5
-  })
-  const sectionRef2 = useRef(null)
-  const intersection2 = useIntersection(sectionRef2,{
-    root : null,
-    rootMargin : '0px',
-    threshold: .5
-  })
+  const { ref, inView } = useInView(
+    {
+      root : null,
+      threshold: 0.5,
+      triggerOnce:true,
+    })
+    const [ ref2, inView2 ] = useInView(
+      {
+        root : null,
+        threshold: 0.5,
+        triggerOnce:true,
+      })
+  
   const fadeIn = elem=>{
     gsap.from(elem,{
       duration:2,
@@ -56,8 +50,7 @@ export const SeconderyContent = () => {
        ease:'power4.out',
       stagger:{
         amount:.3
-      }
-     
+      }   
   })}
   const fadeIn2 = elem=>{
     gsap.to(elem,{
@@ -66,27 +59,22 @@ export const SeconderyContent = () => {
        ease:'power4.out',
       stagger:{
         amount:.3
-      }
-     
+      }   
   })}
-  const [animation ,setAnimation] = useState(false)
-  const [animation2 ,setAnimation2] = useState(false)
-  if(intersection && intersection.intersectionRatio> .5 && !animation){
-  fadeIn('.seconderycontent')
-  setAnimation(prev => prev = true)
-  }
-  if(intersection2 && intersection2.intersectionRatio> .5 && !animation2 )
-  {fadeIn2('.seconderycontent2')
-  setAnimation2(prev => prev = true)
-}
+
+  inView&&
+    fadeIn('.seconderycontent')
+     
+  inView2&&
+    fadeIn2('.seconderycontent2')
   return ( 
     <>
-    <div ref = {sectionRef} className = 'seconderycontent'>
+    <div ref = {ref} className = 'seconderycontent'>
       <p > درباره ما</p>
       <p> ما برآنیم که محصولات درجه یک قائنات را بدون واسطه از کشاورز بدست شما  برسانیم </p>
       <button> اطلاعات بیشتر</button>  
     </div>
-    <div ref = {sectionRef2} className = 'seconderycontent2' >
+    <div ref = {ref2} className = 'seconderycontent2' >
       <div> نظر خریداران</div>
       {/* کامنت ها باید از دیتابیس گرفته شود و این که از جی اس برای تولید تگ استفاده کنم */}
       <div>
