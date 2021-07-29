@@ -72,6 +72,7 @@ export  const MobileNav = styled.section`.container{
     padding: 5%;
     height: auto;
     display: inline;
+    cursor:pointer;
 }
  
  `

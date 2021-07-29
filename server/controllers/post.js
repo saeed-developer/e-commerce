@@ -5,11 +5,11 @@ export const comments = async (req,res)=>{
      const {name} = req.params
      console.log(name)
      for (let x of comment){
-         if (x.name == name){
+         if (x.name === name){
             res.status(200).json(x)
             
          }
-         //I should add esle
+         //I should add else
          
      }
      

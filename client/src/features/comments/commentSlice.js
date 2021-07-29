@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-export const counterSlice = createSlice({
+export const counterSlice = createSlice({ //I think threre is no need to export 
     name: 'counter',
     initialState: {
-      value: 0
+      value: ''
     },
     reducers: {
       increment: state => {
@@ -16,7 +16,7 @@ export const counterSlice = createSlice({
         state.value -= 1
       },
       incrementByAmount: (state, action) => {
-        state.value += action.payload
+        state.value = action.payload
       }
     }
   })

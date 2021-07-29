@@ -1,7 +1,12 @@
+import {Link} from 'react-router-dom'
 const CartPage = ()=>{
     return (
         <>
-        پیج سبد خرید در حال ساخت است
+        
+        <p>پیج در حال ساخت است</p>
+        <Link to = '/وارسی'> 
+        تسویه حساب
+        </Link>
         </>
     )
 }
