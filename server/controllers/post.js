@@ -1,5 +1,5 @@
 import commentmodel from "../models/comment.js";
-export const comments = async (req,res)=>{
+export const findcomments = async (req,res)=>{
     try {
      const comment = await commentmodel.find()
      const {name} = req.params
@@ -12,13 +12,18 @@ export const comments = async (req,res)=>{
          //I should add else
          
      }
-     
-        
-     
-
     }
     catch(err){
      res.status(404).json({message : err.message})
+    }
+}
+export const comments = async(req,res)=>{
+    try{
+        const comments = await commentmodel.find()
+        res.status(200).json(comments)
+    }
+    catch(err){
+        console.log(err)
     }
 }
 

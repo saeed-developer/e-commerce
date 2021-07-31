@@ -7,6 +7,7 @@ import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
 import Waiting from './waiting.js';
+import { useGetshadnakQuery ,usePostshadnakQuery} from './services/shadnakapi.js';
 //import { useSelector } from 'react-redux';
 //import { useDispatch } from 'react-redux';
 //import { increment,decrement,incrementByAmount  } from './features/comments/commentSlice.js';
@@ -26,7 +27,10 @@ const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/ch
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{
- //const  dispatch = useDispatch()                       this redux work and much more easier thand previous mess
+  const {data} = useGetshadnakQuery()
+  usePostshadnakQuery('saeed')
+  data!==undefined && console.log(data)
+ //const  dispatch = useDispatch()                       this redux work and much more easier than previous mess
   //dispatch(incrementByAmount('hello to you too'))
    // const api = Api   
    // const count = useSelector(state => state.counter.value)

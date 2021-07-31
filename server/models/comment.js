@@ -7,11 +7,10 @@ const commentchema = mongoose.Schema( {
     type:  Number,
     default : 0
     },
-    createdat : {
+    createdate : {
     type :Date,
     default: new Date()
     }
-
 })
 const commentmodel = mongoose.model('commentmodel',commentchema)
 export default commentmodel
