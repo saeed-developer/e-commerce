@@ -1,17 +1,19 @@
 import mongoose from 'mongoose'
-const commentchema = mongoose.Schema( {
+const commentschema = mongoose.Schema( {
     name : String,
-    message : String,
-    tags: [String],
-    Like : {
-    type:  Number,
-    default : 0
-    },
-    createdate : {
+    email:String,
+    IP:String,
+    date : {
     type :Date,
     default: new Date()
-    }
-})
-const commentmodel = mongoose.model('commentmodel',commentchema)
+    },
+    content : String,
+    approved : String,
+    type: String,
+    parent_id :   mongoose.ObjectId ,   
+},
+)
+const commentmodel = mongoose.model('commentmodel',commentschema)
 export default commentmodel
 
+ 
