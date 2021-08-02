@@ -4,6 +4,6 @@ import {createcomment,findcomments,comments} from '../controllers/post.js'
 const router = express.Router()
 router.get('/',firstpage)
 router.post('/',createcomment)
-router.post('/comments/:name',findcomments)
+router.post('/comments',findcomments)
 router.get('/comments',comments)
 export default router

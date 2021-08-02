@@ -2,6 +2,7 @@ import {React} from 'react';
 import Garden from './../../../images/zereshk-tree.jpg';
 import { useInView  } from 'react-intersection-observer';
 import gsap from 'gsap';
+import { useGetshadnakcommentsQuery,usePostshadnakcommentQuery } from '../../../services/shadnakapi';
 export const PrimaryContent = () => {
   const { ref, inView } = useInView(
     {
@@ -29,6 +30,20 @@ export const PrimaryContent = () => {
     )
 }
 export const SeconderyContent = () => {
+   let comments = []
+  const {data,isSuccess , isError,error} =  useGetshadnakcommentsQuery()
+   isSuccess && data.map(comment => { if (comment._id === "6106a5c48e830dd4ff96ecf4" || comment._id === "6106a5c48e830dd4ff96ecf5"){
+     var result =  comments.push(comment.content)   
+   }
+   return result
+  })
+  usePostshadnakcommentQuery('saeed')
+ 
+   
+    
+   isError && console.log(error)
+  
+
   const { ref, inView } = useInView(
     {
       root : null,
@@ -78,6 +93,7 @@ export const SeconderyContent = () => {
       <div> نظر خریداران</div>
       {/* کامنت ها باید از دیتابیس گرفته شود و این که از جی اس برای تولید تگ استفاده کنم */}
       <div>
+     
         <div> 
            <p>من استفاده کردم خیلی بی‌نظیر بود و از زعفرون ایی که قبلا از بازار میخریدم کیفیتش بیشتر بود </p>
           علی

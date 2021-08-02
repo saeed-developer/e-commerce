@@ -4,7 +4,9 @@ import {SlideShow} from './slideshow.js'
 import {PrimaryContent , SeconderyContent} from './content.js'
 import './styles.css'
 import Footer from './footer.js'
+
 const FirstPage = ()=>{
+   
     return(
         <>
         <Header />

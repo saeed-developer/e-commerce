@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit'
 import counterReducer from './../features/comments/commentSlice'
 import { shadnakApi } from '../services/shadnakapi'
-import { setupListeners } from '@reduxjs/toolkit/dist/query'
+//import { setupListeners } from '@reduxjs/toolkit/dist/query'
  const store =  configureStore({
   reducer: {
     counter : counterReducer,
@@ -10,5 +10,5 @@ import { setupListeners } from '@reduxjs/toolkit/dist/query'
   middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware().concat(shadnakApi.middleware),
 })
-setupListeners(store.dispatch)
+//setupListeners(store.dispatch)
 export default store

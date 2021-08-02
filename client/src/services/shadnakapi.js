@@ -20,11 +20,11 @@ export const shadnakApi =  createApi({
     }),
     endpoints(build) {
       return {
-        getshadnak: build.query({ query: () => ({ url: '/comments', method: 'get' }) }),
-        postshadnak: build.query({
-          query: (name) => ({ url: `/comments/${name}`, method: 'post' }),
+        getshadnakcomments: build.query({ query: () => ({ url: '/comments', method: 'get' }) }),
+        postshadnakcomment: build.query({
+          query: (_id) => ({ url: `/comments/${_id}`, method: 'post' }),
         }),
       }
     },
   })
-export const { useGetshadnakQuery,usePostshadnakQuery } = shadnakApi
+export const { useGetshadnakcommentsQuery,usePostshadnakcommentQuery } = shadnakApi
