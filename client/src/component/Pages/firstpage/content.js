@@ -2,7 +2,7 @@ import {React} from 'react';
 import Garden from './../../../images/zereshk-tree.jpg';
 import { useInView  } from 'react-intersection-observer';
 import gsap from 'gsap';
-import { useGetshadnakcommentsQuery,usePostshadnakcommentQuery } from '../../../services/shadnakapi';
+import { usePostshadnakcommentQuery } from '../../../services/shadnakapi';
 export const PrimaryContent = () => {
   const { ref, inView } = useInView(
     {
@@ -30,20 +30,7 @@ export const PrimaryContent = () => {
     )
 }
 export const SeconderyContent = () => {
-   let comments = []
-  const {data,isSuccess , isError,error} =  useGetshadnakcommentsQuery()
-   isSuccess && data.map(comment => { if (comment._id === "6106a5c48e830dd4ff96ecf4" || comment._id === "6106a5c48e830dd4ff96ecf5"){
-     var result =  comments.push(comment.content)   
-   }
-   return result
-  })
-  usePostshadnakcommentQuery('saeed')
- 
-   
-    
-   isError && console.log(error)
-  
-
+  const {data,isSuccess} = usePostshadnakcommentQuery(["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"] )
   const { ref, inView } = useInView(
     {
       root : null,
@@ -76,10 +63,8 @@ export const SeconderyContent = () => {
         amount:.3
       }   
   })}
-
   inView&&
-    fadeIn('.seconderycontent')
-     
+    fadeIn('.seconderycontent')   
   inView2&&
     fadeIn2('.seconderycontent2')
   return ( 
@@ -91,19 +76,15 @@ export const SeconderyContent = () => {
     </div>
     <div ref = {ref2} className = 'seconderycontent2' >
       <div> نظر خریداران</div>
-      {/* کامنت ها باید از دیتابیس گرفته شود و این که از جی اس برای تولید تگ استفاده کنم */}
-      <div>
-     
-        <div> 
-           <p>من استفاده کردم خیلی بی‌نظیر بود و از زعفرون ایی که قبلا از بازار میخریدم کیفیتش بیشتر بود </p>
-          علی
-        </div>
-        <div>
-          <p> واقعا نسبت به قیمتی که میدید بسیار کیفیت بالایی داره </p> 
+       {isSuccess&& 
+       <div>
+          <div> <p> {data[0].content}</p> {data[0].name}</div>
+          <div><p> {data[1].content}</p> 
           <div style = {{width:'100%'}}></div>
-         چمنی
-        </div> 
-      </div>
+          {data[1].name}
+          </div> 
+       </div>
+       }      
     </div>
     </>
   )

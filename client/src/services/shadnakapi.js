@@ -3,9 +3,9 @@ import { createApi } from '@reduxjs/toolkit/query/react'
 import axios from 'axios';
 const axiosBaseQuery =
   ({ baseUrl }) =>
-  async ({ url, method, data }) => {
+  async ({ url, method,data ,params}) => {
     try {
-      const result = await axios({ url: baseUrl + url, method, data })
+      const result = await axios({ url: baseUrl + url, method, data,params })
       return { data: result.data }
     } catch (axiosError) {
       let err = axiosError
@@ -22,7 +22,7 @@ export const shadnakApi =  createApi({
       return {
         getshadnakcomments: build.query({ query: () => ({ url: '/comments', method: 'get' }) }),
         postshadnakcomment: build.query({
-          query: (_id) => ({ url: `/comments/${_id}`, method: 'post' }),
+          query: (id) => ({ url: '/comments', method: 'post' ,params:{id :id}}),
         }),
       }
     },
