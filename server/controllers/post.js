@@ -2,7 +2,6 @@ import commentmodel from "../models/comment.js";
 export const findcomments = async (req,res)=>{
     try {
      const id = await req.query.id  
-     console.log(req.query)
         await commentmodel.find({_id : id},(err,doc)=>{
             if(err){//this code is ok but return wrong if one id be wrong
                 res.status(500).json(err)
