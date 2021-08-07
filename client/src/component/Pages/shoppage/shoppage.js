@@ -1,8 +1,9 @@
 import React from 'react'
+import Header from '../firstpage/header'
 const ShopPage = ()=>{
     return (
         <>
-        فروشگاه در دست ساخت است
+      <Header logosize = {'20%'} breakwidth = {'55%'} />
         </>
     )
 }

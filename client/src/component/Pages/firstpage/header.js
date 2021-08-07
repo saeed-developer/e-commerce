@@ -7,7 +7,7 @@ import { useMedia } from 'react-use';
 import { DesktopNav ,MobileNav,ShowMenu } from './styles.js'; //Maybe I shoud use dynamic redering for speed-up loading
 //import FetchData from './../../../api.js'
 //First I decided to use materil-ui but it was  messy and i didn't like it
-const Header = ()=>{ 
+const Header = ({logosize , breakwidth})=>{ 
    const[open , setOpen]=useState(false)
    const isMobile = useMedia('(max-width: 768px)');
    if(isMobile === false && open === true){
@@ -47,7 +47,7 @@ const Header = ()=>{
     return (  
       <>
        
-        {isMobile ? <MobileNav> {open ? <ShowMenu>{content}</ShowMenu>:content}  </MobileNav> :
+        {isMobile ? <MobileNav logosize = {logosize} breakwidth = {breakwidth} > {open ? <ShowMenu>{content}</ShowMenu>:content}  </MobileNav> :
          <DesktopNav> {content}</DesktopNav>}
         
       </>

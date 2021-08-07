@@ -35,12 +35,14 @@ export const DesktopNav = styled.section`.container{
 }
 `
 export  const MobileNav = styled.section`.container{
+    direction:rtl;
     display: flex;
     height: 20%;
     width: 100%;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;}
+    align-items: ${props => props.item || "center"};
+    justify-content: ${props => props.item || "center"}
+    }
  
 
 
@@ -57,11 +59,11 @@ export  const MobileNav = styled.section`.container{
     
 }
 .logo{
-    width:50% ;
+    width:${props => props.logosize || "50%"};
     height:auto ;
  }
  .break{
-     width: 88%;
+     width: ${ props => props.breakwidth || '100%'};
  }
  
  .icon{
@@ -78,10 +80,10 @@ export  const MobileNav = styled.section`.container{
  `
 export const ShowMenu = styled.section`
 .container{
-    flex-direction : column;
+    flex-direction:column;
 }
-.navlink{
-     display : inline;
+.navlink{ 
+     display:inline;
      padding-top :5%;
 }
 `
