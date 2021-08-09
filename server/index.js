@@ -9,7 +9,6 @@ app.use(express.urlencoded({limit : '10Mb' , extended : true}))
 app.use (express.json({limit : '10Mb' , extended : true}))
 app.use(cors())
 app.use('/',router)
-const database_connection = 'mongodb+srv://shadnak:Zanf7IvO6szjGarn@cluster0.irw49.mongodb.net/Cluster0?retryWrites=true&w=majority'
 const DB = process.env.DB
 const Port = process.env.PORT || 3000
 mongoose.connect(DB, {useNewUrlParser : true , useUnifiedTopology : true})
