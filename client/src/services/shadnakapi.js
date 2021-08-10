@@ -20,11 +20,16 @@ export const shadnakApi =  createApi({
     }),
     endpoints(build) {
       return {
-        getshadnakcomments: build.query({ query: () => ({ url: '/comments', method: 'get' }) }),
-        postshadnakcomment: build.query({
+        getcomments: build.query({ query: (id) => ({ url: '/comments', method: 'get' ,params:{id:id}})}),
+        postcomment: build.query({
           query: (id) => ({ url: '/comments', method: 'post' ,params:{id :id}}),
         }),
+        getproduct:build.query({query:(id)=>({url:'/getproduct',method:'get', params:{id:id}})
+        }),
+      //  getproductimage:build.query({query:(id)=>({url:'/productimage',method:'get',params:{id:id}}) }),
       }
     },
   })
-export const { useGetshadnakcommentsQuery,usePostshadnakcommentQuery } = shadnakApi
+export const { useGetcommentsQuery,usePostcommentQuery ,useGetproductQuery} = shadnakApi
+//first I decided to use redux for geting image because of caching advantage but it took time to change binary to base64 and actually I didn't 
+//find good method to do it.

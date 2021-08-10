@@ -2,7 +2,7 @@ import {React} from 'react';
 import Garden from './../../../images/zereshk-tree.jpg';
 import { useInView  } from 'react-intersection-observer';
 import gsap from 'gsap';
-import { usePostshadnakcommentQuery } from '../../../services/shadnakapi';
+import { useGetcommentsQuery} from '../../../services/shadnakapi';
 export const PrimaryContent = () => {
   const { ref, inView } = useInView(
     {
@@ -30,7 +30,7 @@ export const PrimaryContent = () => {
     )
 }
 export const SeconderyContent = () => {
-  const {data,isSuccess} = usePostshadnakcommentQuery(["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"] )
+  const {data,isSuccess} = useGetcommentsQuery(["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"] )
   const { ref, inView } = useInView(
     {
       root : null,

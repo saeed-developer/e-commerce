@@ -6,11 +6,11 @@ export const getProduct = async(req,res)=>{
 const { id} = req.query
 console.log(id)
 try{
- if (id === 'all'){
+  if (id === 'all'){
           const product = await productModel.find().select('name price category')
            res.status(200).json(product)     
     }
-     else{
+ else{
         const product = await productModel.find({_id : id}).select('name price category explination')
         res.status(200).json(product)
     }    
@@ -32,17 +32,19 @@ productModel.find().select('name price').exec((err,doc)=>{
 })}  this is another approach
  */
 export const getProductImage = async(req,res)=>{
-    try{
-        const {name} = req.query
-        const file = await promises.readdir ('./images/shop-page')
-        if(name === 'all'){
+      try{
+        const {id} = req.query
+        
+        if(id === 'all'){
+            const file = await promises.readdir ('./images/shop-page')
             res.status(200).send(file)
-        }
+          }
         else{
-        const stream = await createReadStream(`./images/shop-page/${name}`)
-        stream.pipe(res)}     
-}
+          const stream = await createReadStream(`./images/shop-page/${id}`)
+          stream.pipe(res)
+                          }     
+         }
     catch(err){
-        res.send(err)
-    }
+      res.json({message:err.message})
+              }
 }
