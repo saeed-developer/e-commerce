@@ -1,7 +1,8 @@
 import productModel from "../models/products.js"
 import { createReadStream, promises} from "fs"
-
-
+import { pipeline } from "stream"
+import { promisify } from "util"
+const asyncpipe = promisify(pipeline)
 export const getProduct = async(req,res)=>{
 const { id} = req.query
 console.log(id)
@@ -40,8 +41,11 @@ export const getProductImage = async(req,res)=>{
             res.status(200).send(file)
           }
         else{
-          const stream = await createReadStream(`./images/shop-page/${id}`)
-          stream.pipe(res)
+          await asyncpipe(
+            createReadStream(`./images/shop-page/${id}`)
+            ,res
+          )
+          
                           }     
          }
     catch(err){
