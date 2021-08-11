@@ -16,7 +16,7 @@ const axiosBaseQuery =
   }
 export const shadnakApi =  createApi({
     baseQuery: axiosBaseQuery({
-      baseUrl: 'http://localhost:3000',
+      baseUrl: process.env.REACT_APP_URL,
     }),
     endpoints(build) {
       return {

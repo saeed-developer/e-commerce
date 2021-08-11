@@ -25,9 +25,7 @@ const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/conta
 const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/checkoutpage.js'))
 
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
-const App = ()=>{
-  
-
+const App = ()=>{ 
  //const  dispatch = useDispatch()                       this redux work and much more easier than previous mess
   //dispatch(incrementByAmount('hello to you too'))
    // const api = Api   
