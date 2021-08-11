@@ -6,7 +6,7 @@ import { getProduct, getProductImage } from '../controllers/productGet.js'
 const router = express.Router()
 router.post('/comment',createcomment)
 router.get('/comments',findcomments)
-router.post('/createproduct',createProduct)//forproduct
-router.get('/getproduct',getProduct)
-router.get('/productimage',getProductImage)
+router.post('/create-product',createProduct)//forproduct
+router.get('/products',getProduct)
+router.get('/product-image',getProductImage)
 export default router

@@ -5,7 +5,6 @@ import { promisify } from "util"
 const asyncpipe = promisify(pipeline)
 export const getProduct = async(req,res)=>{
 const { id} = req.query
-console.log(id)
 try{
   if (id === 'all'){
           const product = await productModel.find().select('name price category')

@@ -1,0 +1,30 @@
+:root{
+    --green:#2FE92B;
+    --black:#0F0F0F;
+    --yellow:#e1bb23;
+    --red:#c92228;
+    }
+    * {
+        box-sizing: border-box;
+      }
+   .shop-page{
+       width: 100%;
+   }
+.product-container{
+    width: inherit;
+    height: auto;
+    direction: rtl;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    
+}
+.item-container{
+    width: inherit;
+    
+}
+.product-img{
+    
+width: 25%;
+height: auto;
+}

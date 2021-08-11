@@ -24,7 +24,7 @@ export const shadnakApi =  createApi({
         postcomment: build.query({
           query: (id) => ({ url: '/comments', method: 'post' ,params:{id :id}}),
         }),
-        getproduct:build.query({query:(id)=>({url:'/getproduct',method:'get', params:{id:id}})
+        getproduct:build.query({query:(id)=>({url:'/products',method:'get', params:{id:id}})
         }),
       //  getproductimage:build.query({query:(id)=>({url:'/productimage',method:'get',params:{id:id}}) }),
       }
