@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Product = ({img,info}) => {
+const Product = ({img,info,onClick}) => {
     return (
-        <div className = 'item-container'>
+        <div  className = 'item-container' onClick= {onClick} >
             <img src = {img} className ='product-img' alt = {info.name}  />
             <p>{info.category}</p>
             <p>{info.name}</p>

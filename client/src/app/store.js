@@ -1,6 +1,6 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './../features/comments/commentSlice'
-import { shadnakApi } from '../services/shadnakapi'
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './../features/cart/cartSlice.js';
+import { shadnakApi } from '../services/shadnakapi';
 //import { setupListeners } from '@reduxjs/toolkit/dist/query'
  const store =  configureStore({
   reducer: {
