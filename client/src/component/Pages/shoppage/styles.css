@@ -33,14 +33,14 @@
 width: 100%;
 height: auto;
 }
-.btn { 
+.shop-btn { 
     color: white;
     border:3px solid var(--green);
     font-size: 1.2vmax;
     width: 50%;
     background-color: var(--green);
   } 
-  .btn:hover{
+  .shop-btn:hover{
     background-color: inherit;
     color: var(--yellow);
     cursor: pointer;

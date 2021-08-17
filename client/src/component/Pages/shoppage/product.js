@@ -16,9 +16,9 @@ const Product = ({img,info,onClick,removeButton,onClickR}) => {
             <p>{info.name}</p>
               {info.price.onSale ?<div> <p style = {{textDecoration :'line-through'}}>{info.price.original} </p> <p> {info.price.onSale}</p>  </div>:
               <div><p> {info.price.original}</p></div>}   
-            <button  className = 'btn' onClick= {onClick} > افزودن به سبد خرید</button>
-            <p> تعداد:{y}</p>
-            {removeButton && <button className = 'btn' onClick ={onClickR} >  حذف از سبد خرید</button> }
+            <button  className = 'shop-btn' onClick= {onClick} > افزودن به سبد خرید</button>
+            <p> تعداد:{y}</p>{/*  با کلس بی تی ان در رندر اولیه با بی تی ان دیگر فایل های سی اس اس مشکل پیدا میکرد*/}
+            {removeButton && <button className = 'shop-btn' onClick ={onClickR} >  حذف از سبد خرید</button> }
         </div>
     )
 }
