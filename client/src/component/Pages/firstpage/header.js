@@ -17,13 +17,14 @@ const Header = ({logosize , breakwidth})=>{
     <header className='container' >
     <img src ={logo} alt ='لوگو شادناک' className = 'logo' ></img>
     <div className = 'break'></div>
-    <img  src = {MenuIcon} onClick={()=>{
+    <img  src = {MenuIcon} alt = 'فهرست' onClick={()=>{
        setOpen(prev => !prev)
        
-    }} className = 'icon' alt='فهرست'> 
+    }} id = 'icon' className = 'icon' > 
       </img>
     
     <Link  to ='/'   className = 'navlink'> 
+    صفحه نخست
     </Link>
     <Link  to = '/فروشگاه-شادناک'   className = 'navlink' > 
     فروشگاه آنلاین

@@ -61,22 +61,20 @@ export  const MobileNav = styled.section`.container{
 .logo{
     width:${props => props.logosize || "50%"};
     height:auto ;
+    padding:0%;
  }
  .break{
      width: ${ props => props.breakwidth || '100%'};
  }
  
+
  .icon{
-   display: inline;
- }
- .icon{
-    width: 10%;
-    padding: 5%;
-    height: auto;
-    display: inline;
+  display: inline; 
+  width: 10%;
+  padding-top: 4%;
+  height: auto;
     cursor:pointer;
-}
- 
+ }
  `
 export const ShowMenu = styled.section`
 .container{

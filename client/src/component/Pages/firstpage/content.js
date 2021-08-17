@@ -30,7 +30,7 @@ export const PrimaryContent = () => {
     )
 }
 export const SeconderyContent = () => {
-  const {data,isSuccess} = useGetcommentsQuery(["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"] )
+  const {data,isSuccess,isError,refetch} = useGetcommentsQuery(["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"] )
   const { ref, inView } = useInView(
     {
       root : null,
@@ -76,7 +76,7 @@ export const SeconderyContent = () => {
     </div>
     <div ref = {ref2} className = 'seconderycontent2' >
       <div> نظر خریداران</div>
-       {isSuccess&& 
+       {isSuccess&&
        <div>
           <div> <p> {data[0].content}</p> {data[0].name}</div>
           <div><p> {data[1].content}</p> 
@@ -84,7 +84,7 @@ export const SeconderyContent = () => {
           {data[1].name}
           </div> 
        </div>
-       }      
+       }  {isError && refetch()}    
     </div>
     </>
   )
