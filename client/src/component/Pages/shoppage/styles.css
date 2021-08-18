@@ -77,6 +77,13 @@ height: auto;
      margin-left: 50%;
     
   }
+  .shop-link{
+    text-decoration: none;
+    color:var(--yellow)
+  }
+  .shop-link:hover{
+    color: var(--black);
+  }
   @media (max-width :768px ) and (orientation:portrait){
     .product-container{
         flex-direction: column;

@@ -60,6 +60,7 @@ setShowBtn({...showBtn,[item._id]:false})
      obj[property] = false
     }
   }
+ 
    setShowBtn(obj)
   },[data,isSuccess])
        let total = useSelector(state =>state.counter.total) 

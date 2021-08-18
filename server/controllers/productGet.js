@@ -10,6 +10,10 @@ try{
           const product = await productModel.find().select('name price category')
            res.status(200).json(product)     
     }
+    else if (id === 'name') {
+      const product = await productModel.find().select('_id name')
+      res.status(200).json(product)     
+    }
  else{
         const product = await productModel.find({_id : id}).select('name price category explination')
         res.status(200).json(product)

@@ -7,13 +7,8 @@ import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
 import Waiting from './waiting.js';
-//import { useSelector } from 'react-redux';
-//import { useDispatch } from 'react-redux';
-//import { increment,decrement,incrementByAmount  } from './features/comments/commentSlice.js';
-/*the approach below is not SSR for ssr aproach  next js shoud be used
-also if i using babel need plugin to installed
-*/
-//import Api from './api/api.js'
+import { useGetproductQuery } from './services/shadnakapi.js';
+import Product from './component/Pages/shoppage/product.js';
 const FirstPage = React.lazy(()=>import ('./component/Pages/firstpage/firstpage.js'));
 const ShopPage = React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js'));
 const ArticlesPage = React.lazy(()=> import ('./component/Pages/articles/articlespage.js'));
@@ -23,14 +18,14 @@ const CartPage = React.lazy(()=> import('./component/Pages/cartpage/cartpage.js'
 const Guidepage = React.lazy(()=> import('./component/Pages/guidepage/guidepage.js')); 
 const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js'));
 const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/checkoutpage.js'))
-
+const ProductPage = React.lazy(()=>import ('./component/Pages/productpage/productpage'))
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{ 
- //const  dispatch = useDispatch()                       this redux work and much more easier than previous mess
-  //dispatch(incrementByAmount('hello to you too'))
-   // const api = Api   
-   // const count = useSelector(state => state.counter.value)
-   //console.log(count)
+const {data , isSuccess ,refetch , isError} = useGetproductQuery('all')
+isSuccess && console.log(data)
+isError && refetch()
+
+
 return ( 
   <ThemeProvider theme = {Theme}>
     <StylesProvider jss={jss}> 
@@ -39,7 +34,7 @@ return (
            <Suspense fallback= {Waiting}>
              <Switch>
                <Route path = '/' component = {FirstPage}  exact/> 
-               <Route path = '/فروشگاه-شادناک' component = {ShopPage} />  
+               <Route path = '/فروشگاه-شادناک' component = {ShopPage} exact/>  
                <Route path = '/تماس-باما' component = {ContactPage} /> 
                <Route path = '/درباره-ما' component = {AboutPage} /> [301 redirect from my-account]
                <Route path = '/سبد-خرید' component = {CartPage} /> [301 redirect from my-account]
@@ -47,6 +42,13 @@ return (
                <Route path = '/مقالات' component = {ArticlesPage} /> 
                <Route path = '/راهنمای-خرید' component = {Guidepage}/>
                <Route path = '/وارسی' component = {Checkoutpage}/>
+               {isSuccess && data.map((item)=>{
+                 let  url =  item.name.replace(  /[' ' , (]/g,'-').slice(0,-1)
+                 
+                 const path = `/فروشگاه-شادناک/${url}`
+                 console.log(path)
+                 return <Route path = {path} key = {item._id} > <ProductPage id = {item._id} /> </Route>
+               })}
              </Switch>
             </Suspense>    
         </Router> 
