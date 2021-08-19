@@ -24,7 +24,9 @@ function nameToUrl(items){
     for(let x of items){
         const name = x.name.replace(  /[' ' , (]/g,'-').slice(0,-1)          
         const path = `/فروشگاه-شادناک/${name}`
-        paths.push(path)
+        paths.push({
+            id : x._id,
+            path:path})
     }
    return paths
 }

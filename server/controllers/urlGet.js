@@ -2,7 +2,6 @@
 import urlModel from "./../models/url.js"
 export const getUrl = async(req,res)=>{
    const {key} = req.query
-   console.log(key)
    try{
         if(key === 'main'){
         const response = await urlModel.find().select("main")

@@ -7,8 +7,8 @@ import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
 import { Typography } from '@material-ui/core';
 import Waiting from './waiting.js';
-import { useGetproductQuery } from './services/shadnakapi.js';
-import Product from './component/Pages/shoppage/product.js';
+import {useGeturlQuery } from './services/shadnakapi.js';
+
 const FirstPage = React.lazy(()=>import ('./component/Pages/firstpage/firstpage.js'));
 const ShopPage = React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js'));
 const ArticlesPage = React.lazy(()=> import ('./component/Pages/articles/articlespage.js'));
@@ -21,8 +21,7 @@ const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/ch
 const ProductPage = React.lazy(()=>import ('./component/Pages/productpage/productpage'))
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{ 
-const {data , isSuccess ,refetch , isError} = useGetproductQuery('all')
-isSuccess && console.log(data)
+const {data , isSuccess ,refetch , isError} = useGeturlQuery('product')
 isError && refetch()
 
 
@@ -36,18 +35,14 @@ return (
                <Route path = '/' component = {FirstPage}  exact/> 
                <Route path = '/فروشگاه-شادناک' component = {ShopPage} exact/>  
                <Route path = '/تماس-باما' component = {ContactPage} /> 
-               <Route path = '/درباره-ما' component = {AboutPage} /> [301 redirect from my-account]
-               <Route path = '/سبد-خرید' component = {CartPage} /> [301 redirect from my-account]
+               <Route path = '/درباره-ما' component = {AboutPage} /> 
+               <Route path = '/سبد-خرید' component = {CartPage} /> 
                <Route path = '/حساب-کاربری' component = {AccountPage} /> 
                <Route path = '/مقالات' component = {ArticlesPage} /> 
                <Route path = '/راهنمای-خرید' component = {Guidepage}/>
                <Route path = '/وارسی' component = {Checkoutpage}/>
-               {isSuccess && data.map((item)=>{
-                 let  url =  item.name.replace(  /[' ' , (]/g,'-').slice(0,-1)
-                 
-                 const path = `/فروشگاه-شادناک/${url}`
-                 console.log(path)
-                 return <Route path = {path} key = {item._id} > <ProductPage id = {item._id} /> </Route>
+               {isSuccess && data[0].product.map((item)=>{
+                 return <Route path = {item.path} key = {item.id} > <ProductPage id = {item.id} /> </Route>
                })}
              </Switch>
             </Suspense>    

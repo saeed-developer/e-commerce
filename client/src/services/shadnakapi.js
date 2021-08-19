@@ -26,10 +26,10 @@ export const shadnakApi =  createApi({
         }),
         getproduct:build.query({query:(id)=>({url:'/products',method:'get', params:{id:id}})
         }),
-      //  getproductimage:build.query({query:(id)=>({url:'/productimage',method:'get',params:{id:id}}) }),
+     geturl:build.query({query:(value)=>({url:'/get-url',method:'get',params:{key:value}}) }),
       }
     },
   })
-export const { useGetcommentsQuery,usePostcommentQuery ,useGetproductQuery} = shadnakApi
+export const { useGetcommentsQuery,usePostcommentQuery ,useGetproductQuery,useGeturlQuery} = shadnakApi
 //first I decided to use redux for geting image because of caching advantage but it took time to change binary to base64 and actually I didn't 
 //find good method to do it.
