@@ -1,13 +1,10 @@
 import productModel from "../models/products.js"
 export const createProduct = async(req,res)=>{
     const product = req.body 
-    console.log(product)
     try {
-        await productModel.insertMany(product , (err,doc)=>{
-         if (doc){
-             res.status(201).json(doc)
-         }
-        })
+        const createProduct =  await productModel.insertMany(product)
+         res.status(201).json(createProduct)
+        
         
     }
     catch(err){
