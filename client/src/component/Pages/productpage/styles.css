@@ -1,0 +1,26 @@
+:root{
+    --green:#2FE92B;
+    --black:#0F0F0F;
+    --yellow:#e1bb23;
+    --red:#c92228;
+    }
+.product-page-main-container{
+display: flex;
+width: 100%;
+direction: rtl;
+align-items: center;
+align-content: center;
+justify-content: space-around;
+}
+.product-page-main-img{
+    width: 30%;
+    padding-top: 2%;
+}
+.product-page-main-p{
+color :var(--black);
+font-size: 1.5vmax;
+display: flex;
+flex-direction: column;
+width: 30%;
+flex-wrap: wrap;
+}

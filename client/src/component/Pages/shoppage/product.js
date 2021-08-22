@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 
 
 const Product = ({img,info,onClick,removeButton,onClickR}) => {
+   
    const {data , isSuccess,isError,refetch} = useGeturlQuery('product')
    
    let items = useSelector(state=> state.counter.item)
@@ -13,8 +14,12 @@ const Product = ({img,info,onClick,removeButton,onClickR}) => {
    for(let x of items){
     if(x._id === info._id){
         amount++
+       
     }
    } 
+ 
+   const am = useSelector(state => state.counter.amount)
+   console.log(am)
    let path;
    isError && refetch() 
   if(isSuccess){ for(let x of data[0].product){
@@ -35,7 +40,7 @@ const Product = ({img,info,onClick,removeButton,onClickR}) => {
             <div><p> {info.price.original} تومان</p></div>}   
             <button  className = 'shop-btn' onClick= {onClick} > افزودن به سبد خرید</button>
             
-            <p> تعداد:{amount}</p>{/*  با کلس بی تی ان در رندر اولیه با بی تی ان دیگر فایل های سی اس اس مشکل پیدا میکرد*/}
+            <p> تعداد:{amount}</p>
             {removeButton && <button className = 'shop-btn' onClick ={onClickR} >  حذف از سبد خرید</button> }
           
         </div>     
