@@ -10,6 +10,7 @@ import './styles.css';
 const ShopPage = ()=>{
   const dispatch = useDispatch()
   const selector = useSelector(state =>state.counter.item)
+  
   function click(item){
     let price;
     if (item.price.onSale !=null){
@@ -21,6 +22,8 @@ const ShopPage = ()=>{
    dispatch(addNewItem(item))
    dispatch(increment( price ))
    setShowBtn({...showBtn,[item._id]:true})
+  
+   
 }
 function onClickR(item){
 const id = item._id
