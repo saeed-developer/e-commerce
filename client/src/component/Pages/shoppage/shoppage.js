@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../firstpage/header'
 import { useGetproductQuery } from '../../../services/shadnakapi';
 import Product from './product.js';
-import { increment, addNewItem,removeItem,decrement } from '../../../features/cart/cartSlice';
+import { increment, addNewItem,removeItem,decrement, itemAmount } from '../../../features/cart/cartSlice';
 import { useDispatch,useSelector} from 'react-redux';
 import { useState , useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,6 @@ import './styles.css';
 const ShopPage = ()=>{
   const dispatch = useDispatch()
   const selector = useSelector(state =>state.counter.item)
-  
   function click(item){
     let price;
     if (item.price.onSale !=null){
@@ -21,9 +20,9 @@ const ShopPage = ()=>{
   }
    dispatch(addNewItem(item))
    dispatch(increment( price ))
-   setShowBtn({...showBtn,[item._id]:true})
+   let addition = amount[item._id] + 1
+   setAmount({...amount,[item._id]:addition})
   
-   
 }
 function onClickR(item){
 const id = item._id
@@ -41,31 +40,44 @@ else  {
   price = item.price.original
 }
 dispatch(decrement(price))
+let subtract = amount[item._id]- 1
+
+setAmount( {...amount,[item._id]:subtract})
+} 
+  const reduxAmount = useSelector(state => state.counter.amount)
+  let initial;
+  
+  if ( Object.keys(reduxAmount).length === 0 && reduxAmount.constructor === Object){
+    initial = {}
+    console.log('it is undefined')
+  }
+  else {
+    initial = reduxAmount
+  }
  
-let amount = 0
-for(let x of items){
- if(x._id === item._id){
-     amount++
- }
-}
-if(amount === 0){
-setShowBtn({...showBtn,[item._id]:false})
-}
-}
-  const [showBtn , setShowBtn] = useState({})
+  
+  const [amount, setAmount] = useState(initial) 
   const {isSuccess,data ,isError,refetch}  = useGetproductQuery('all')
   const imgUrl = process.env.REACT_APP_URL + '/product-image?id='
   useEffect(()=>{
-  let obj = {}
+  let initialAmount = {}
   if (isSuccess){
     for (let x of data){
      let property = x._id
-     obj[property] = false
-    }
+     initialAmount[property] = 0
+    } 
   }
- 
-   setShowBtn(obj)
+   if(Object.keys(reduxAmount).length === 0 && reduxAmount.constructor === Object){
+   setAmount(initialAmount)
+   console.log('triggred')
+  }
+
   },[data,isSuccess])
+  useEffect(()=>{
+    dispatch(itemAmount(amount))
+   
+    
+  },[amount])
        let total = useSelector(state =>state.counter.total) 
        let showFooter
        if (total=== 0){
@@ -80,7 +92,7 @@ setShowBtn({...showBtn,[item._id]:false})
      {isSuccess &&  <div className = 'product-container'>  { data.map((item) =>{
       return   <Product key = {item._id} img = {imgUrl + item._id + '.png'} info = {item} onClick = {()=>{
         click(item)
-      }} removeButton = {showBtn[item._id]}  onClickR = {()=>{
+      }} removeButton = {reduxAmount[item._id]}  onClickR = {()=>{
         onClickR(item)
       }}/>
       })  }</div> }{isError &&  refetch()  }  

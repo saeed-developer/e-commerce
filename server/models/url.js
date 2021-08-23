@@ -1,8 +1,8 @@
 import  mongoose  from "mongoose";
 const urlSchema = mongoose.Schema(
     {
-        main : Array,
-        product:Array
+        path : String,
+        productId:String
     }
 )
 const urlModel = mongoose.model('urlModel',urlSchema)

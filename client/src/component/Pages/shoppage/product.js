@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Product = ({img,info,onClick,removeButton,onClickR}) => {
    
-   const {data , isSuccess,isError,refetch} = useGeturlQuery('product')
+   const {data , isSuccess,isError,refetch} = useGeturlQuery()
    
    let items = useSelector(state=> state.counter.item)
    let amount = 0
@@ -17,18 +17,20 @@ const Product = ({img,info,onClick,removeButton,onClickR}) => {
        
     }
    } 
- 
-   const am = useSelector(state => state.counter.amount)
-   console.log(am)
    let path;
    isError && refetch() 
-  if(isSuccess){ for(let x of data[0].product){
-     if(x.id ===info._id){
+  if(isSuccess){ for(let x of data){
+     if(x.productId ===info._id){
          path = x.path
      }
   }}
-  
-   
+  let show;
+   if(removeButton > 0 ){
+    show = true
+   }
+   else if (removeButton === 0){
+       show = false
+   }
     return (
         <>
         <div  className = 'item-container'  >
@@ -41,7 +43,7 @@ const Product = ({img,info,onClick,removeButton,onClickR}) => {
             <button  className = 'shop-btn' onClick= {onClick} > افزودن به سبد خرید</button>
             
             <p> تعداد:{amount}</p>
-            {removeButton && <button className = 'shop-btn' onClick ={onClickR} >  حذف از سبد خرید</button> }
+            {show && <button className = 'shop-btn' onClick ={onClickR} >  حذف از سبد خرید</button> }
           
         </div>     
         </>

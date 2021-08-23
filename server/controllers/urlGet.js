@@ -1,5 +1,5 @@
-
 import urlModel from "./../models/url.js"
+import productModel from "../models/products.js"
 export const getUrl = async(req,res)=>{
    const {key} = req.query
    try{
@@ -10,7 +10,24 @@ export const getUrl = async(req,res)=>{
             const response = await urlModel.find().select("product")
             res.status(200).json(response) 
         }
-        else{
+        else if (key === 'product/name'){
+            const response = await urlModel.aggregate(
+                [
+                 { $lookup:{
+                    from : 'productmodels',
+                    localField:'productId',
+                    foreignField:'_id',
+                    as:'urlname'
+
+                    }},
+                  
+                
+                ]    
+ )
+              res.status(200).json(response)
+        }
+      
+        else {
             const response = await urlModel.find()
             res.status(200).json(response) 
         }       

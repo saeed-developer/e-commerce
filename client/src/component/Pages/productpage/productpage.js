@@ -1,13 +1,14 @@
 import React from 'react'
 import { useGetproductQuery } from '../../../services/shadnakapi'
 import './styles.css';
+import { useSelector } from 'react-redux';
 import Header from './../firstpage/header.js'
 import Button from '../../../stories/button';
 const ProductPage = ({id}) => {
    const  {data,isSuccess,isError,refetch} = useGetproductQuery(id)
    const imgUrl = process.env.REACT_APP_URL + '/product-image?id=' + id + '.png'
+   const amount = useSelector(state => state.counter.amount[id])
    isError && refetch()
-  console.log(data)
     return (
         <>
         <Header logosize = {'20%'} breakwidth = {'55%'} />
@@ -24,7 +25,11 @@ const ProductPage = ({id}) => {
             <div><p> {data[0].price.original} تومان</p></div>}  
           <Button value = 'افزودن به سبد خرید'  fontSize = '1.5vmax' width = '60%'/>
           </div>
-     </div>  } 
+         <p> تعداد :{amount}</p> 
+     </div>  
+      
+     }
+     
           
        </>
     )

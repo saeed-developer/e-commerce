@@ -21,7 +21,7 @@ const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/ch
 const ProductPage = React.lazy(()=>import ('./component/Pages/productpage/productpage'))
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{ 
-const {data , isSuccess ,refetch , isError} = useGeturlQuery('product')
+const {data , isSuccess ,refetch , isError} = useGeturlQuery()
 isError && refetch()
 
 
@@ -41,8 +41,8 @@ return (
                <Route path = '/مقالات' component = {ArticlesPage} /> 
                <Route path = '/راهنمای-خرید' component = {Guidepage}/>
                <Route path = '/وارسی' component = {Checkoutpage}/>
-               {isSuccess && data[0].product.map((item)=>{
-                 return <Route path = {item.path} key = {item.id} > <ProductPage id = {item.id} /> </Route>
+               {isSuccess && data.map((item)=>{
+                 return <Route path = {item.path} key = {item._id} > <ProductPage id = {item.productId}  /> </Route>
                })}
              </Switch>
             </Suspense>    
