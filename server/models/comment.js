@@ -10,7 +10,8 @@ const commentschema = mongoose.Schema( {
     content : String,
     approved : String,
     type: String,
-    parent_id :   mongoose.ObjectId ,   
+    parent_id :   mongoose.ObjectId , 
+    product_id:mongoose.ObjectId  
 },
 )
 const commentmodel = mongoose.model('commentmodel',commentschema)

@@ -71,9 +71,7 @@ setAmount( {...amount,[item._id]:subtract})
 
   },[data,isSuccess])
   useEffect(()=>{
-    dispatch(itemAmount(amount))
-   
-    
+    dispatch(itemAmount(amount))   
   },[amount])
        let total = useSelector(state =>state.counter.total) 
        let showFooter

@@ -20,7 +20,8 @@ export const shadnakApi =  createApi({
     }),
     endpoints(build) {
       return {
-        getcomments: build.query({ query: (id) => ({ url: '/comments', method: 'get' ,params:{id:id}})}),
+        getcomments: build.query({ query: (key) => ({ url: '/comments', method: 'get' ,params:{key : key.key , id : key.id}
+      })}),
         postcomment: build.query({
           query: (id) => ({ url: '/comments', method: 'post' ,params:{id :id}}),
         }),

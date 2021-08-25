@@ -30,7 +30,7 @@ export const PrimaryContent = () => {
     )
 }
 export const SeconderyContent = () => {
-  const {data,isSuccess,isError,refetch} = useGetcommentsQuery(["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"] )
+  const {data,isSuccess,isError,refetch} = useGetcommentsQuery({id:["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"]} )
   const { ref, inView } = useInView(
     {
       root : null,

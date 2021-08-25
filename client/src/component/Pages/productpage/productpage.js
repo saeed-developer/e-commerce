@@ -1,5 +1,5 @@
 import React from 'react'
-import { useGetproductQuery } from '../../../services/shadnakapi'
+import { useGetproductQuery,useGetcommentsQuery } from '../../../services/shadnakapi'
 import { useState,useEffect } from 'react';
 import './styles.css';
 import { useSelector } from 'react-redux';
@@ -8,6 +8,9 @@ import Button from '../../../stories/button';
 import HandleCart from './handleCart';
 const ProductPage = ({id}) => {
    const  {data,isSuccess,isError,refetch} = useGetproductQuery(id)
+   const commentsNumber = useGetcommentsQuery({key : 'count' , id : id})
+   commentsNumber.isError && commentsNumber.refetch()
+   
    const imgUrl = process.env.REACT_APP_URL + '/product-image?id=' + id + '.png'
    const amount = useSelector(state => state.counter.amount[id])
    isError && refetch()
@@ -47,10 +50,12 @@ const ProductPage = ({id}) => {
           </div>
           <p> تعداد :{amount}</p> 
           </div>
-         
-     </div>  
-      
+     </div>   
      }     
+     <div className = 'product-page-comment-container'>
+    {commentsNumber.isSuccess && <p > نظرات ({commentsNumber.data}) </p>}
+      <hr />
+     </div>
        </>
     )
 }
