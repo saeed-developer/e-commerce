@@ -1,11 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { increment, addNewItem,removeItem,decrement, itemAmount } from './../../../features/cart/cartSlice.js'
+import { increment,decrement, itemAmount } from './../../../features/cart/cartSlice.js'
 import { useDispatch,useSelector} from 'react-redux';
 import { useState , useEffect } from 'react';
 import { useGetproductQuery } from './../../../services/shadnakapi.js'
 const HandleCart = ({onClick , onClickR,item})=>{
     const dispatch = useDispatch()
-    const selector = useSelector(state =>state.counter.item)
     const reduxAmount = useSelector(state => state.counter.amount)
     let initial;
     if ( Object.keys(reduxAmount).length === 0 && reduxAmount.constructor === Object){
@@ -25,19 +24,11 @@ const HandleCart = ({onClick , onClickR,item})=>{
       else {
       price = item.price.original
     }
-     dispatch(addNewItem(item))
      dispatch(increment( price ))
      let addition = amount[item._id] + 1
      setAmount({...amount,[item._id]:addition})  
   }
   function clickR(item){
-  const id = item._id
-  let items = [...selector]
-  const index = items.findIndex((i)=>{
-  return i._id === id
-  })
-  items.splice(index,1)
-  dispatch(removeItem(items))
   let price;
   if (item.price.onSale !=null){
     price = item.price.onSale

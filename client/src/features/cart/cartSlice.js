@@ -16,13 +16,6 @@ export const counterSlice = createSlice({ //I think threre is no need to export
         state.total -= action.payload
       }
       },
-      addNewItem: (state, action) => {
-        state.item = [...state.item, action.payload ]
-      },
-      removeItem :(state,action)=>{
-        state.item = action.payload
-      },
-
       itemAmount:(state,action)=>{
       state.amount =  action.payload
     }
@@ -31,6 +24,6 @@ export const counterSlice = createSlice({ //I think threre is no need to export
   })
   
   // Action creators are generated for each case reducer function
-  export const { increment, decrement, addNewItem ,removeItem,itemAmount} = counterSlice.actions
+  export const { increment, decrement, itemAmount} = counterSlice.actions
   
   export default counterSlice.reducer

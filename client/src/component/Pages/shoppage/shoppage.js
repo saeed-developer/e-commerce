@@ -12,7 +12,6 @@ const ShopPage = ()=>{
   const [click , setClick] = useState(false)
   const [clickR , setClickR] = useState(false)
   const [item , setItem] = useState(null)
-  const reduxAmount = useSelector(state => state.counter.amount)
   const {isSuccess,data ,isError,refetch}  = useGetproductQuery('all')
   const imgUrl = process.env.REACT_APP_URL + '/product-image?id='
        let total = useSelector(state =>state.counter.total) 
@@ -37,7 +36,7 @@ const ShopPage = ()=>{
       return   <Product key = {item._id} img = {imgUrl + item._id + '.png'} info = {item} onClick = {()=>{
         setClick(true)
         setItem(item)
-      }} removeButton = {reduxAmount[item._id]}  onClickR = {()=>{
+      }}  onClickR = {()=>{
         setClickR(true)
         setItem(item)
       }}/>

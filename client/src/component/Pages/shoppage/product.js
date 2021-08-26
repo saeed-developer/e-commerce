@@ -5,18 +5,10 @@ import { Link } from 'react-router-dom'
 
 
 
-const Product = ({img,info,onClick,removeButton,onClickR}) => {
+const Product = ({img,info,onClick,onClickR}) => {
    
    const {data , isSuccess,isError,refetch} = useGeturlQuery()
-   
-   let items = useSelector(state=> state.counter.item)
-   let amount = 0
-   for(let x of items){
-    if(x._id === info._id){
-        amount++
-       
-    }
-   } 
+   const amount = useSelector(state => state.counter.amount[info._id])
    let path;
    isError && refetch() 
   if(isSuccess){ for(let x of data){
@@ -25,10 +17,10 @@ const Product = ({img,info,onClick,removeButton,onClickR}) => {
      }
   }}
   let show;
-   if(removeButton > 0 ){
+   if(amount > 0 ){
     show = true
    }
-   else if (removeButton === 0){
+   else if (amount === 0){
        show = false
    }
     return (
