@@ -3,7 +3,6 @@ export const counterSlice = createSlice({ //I think threre is no need to export
     name: 'counter',
     initialState: {
       amount:{},
-      item: [],
       total:0
     },
     reducers: {
