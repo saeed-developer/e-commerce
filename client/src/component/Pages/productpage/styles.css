@@ -5,6 +5,7 @@
     --red:#c92228;
     }
 .product-page-main-container{
+margin-top:4% ;
 display: flex;
 width: 100%;
 direction: rtl;

@@ -1,9 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { increment, addNewItem,removeItem,decrement, itemAmount } from './../../../features/cart/cartSlice.js'
 import { useDispatch,useSelector} from 'react-redux';
 import { useState , useEffect } from 'react';
 import { useGetproductQuery } from './../../../services/shadnakapi.js'
 const HandleCart = ({onClick , onClickR,item})=>{
- 
     const dispatch = useDispatch()
     const selector = useSelector(state =>state.counter.item)
     const reduxAmount = useSelector(state => state.counter.amount)
@@ -62,7 +62,7 @@ const HandleCart = ({onClick , onClickR,item})=>{
      setAmount(initialAmount)
     }
   
-    },[data,isSuccess])
+    },[data,isSuccess,reduxAmount])
     useEffect(()=>{
       dispatch(itemAmount(amount))
     },[amount])
