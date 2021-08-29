@@ -25,18 +25,24 @@ flex-direction: column;
 width: 30%;
 flex-wrap: wrap;
 }
-.product-page-comment-container{
+.product-page-comment-section-container{
     direction: rtl;
     display: flex;
     font-size: 1.5vmax;
     flex-direction: column;
     width: 100%;
 }
-.product-page-comment-container :nth-child(1){
+.product-page-comment-section-container :nth-child(1){
     align-self: center;
     
 }
-.product-page-comment-container :nth-child(2){
-    border: 1px solid var(--black);
-    width: inherit;
+.product-page-comment-container {
+  width: 50%;
+  align-self: center;
+  flex-wrap: wrap;
+  display: flex;
+  background-color: ivory;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
 }

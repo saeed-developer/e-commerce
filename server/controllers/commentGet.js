@@ -10,7 +10,8 @@ export const findcomments = async (req,res)=>{
         else if (key === 'count'){
             const amount  = await commentmodel.countDocuments({
                 "product_id":id,
-                "approved":"1"
+                "approved":"1",
+                "parent_id":null
             })
             res.status(200).json(amount)
         }
