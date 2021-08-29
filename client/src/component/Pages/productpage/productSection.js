@@ -23,7 +23,7 @@ const ProductSection = ({id}) => {
          {  isSuccess && <div className = 'product-page-main-container' >
           <img className = 'product-page-main-img'  src = {imgUrl} alt = {data[0].name} />
           <div className =  'product-page-main-p'>
-          <p >{data[0].name}</p> <br/>
+          <p>{data[0].name}</p> <br/>
           <p> درباره محصول</p>
           <p> {data[0].explination} </p>
           <p>قیمت:</p>

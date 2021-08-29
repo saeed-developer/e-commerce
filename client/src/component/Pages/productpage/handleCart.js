@@ -13,6 +13,7 @@ const HandleCart = ({onClick , onClickR,item})=>{
     else {
       initial = reduxAmount
     }
+    
     const [amount, setAmount] = useState(initial) 
     const {isSuccess,data ,isError,refetch}  = useGetproductQuery('all')
     isError && refetch()
@@ -49,11 +50,11 @@ const HandleCart = ({onClick , onClickR,item})=>{
        initialAmount[property] = 0
       } 
     }
-     if(Object.keys(reduxAmount).length === 0 && reduxAmount.constructor === Object){
+    if(Object.keys(reduxAmount).length === 0 && reduxAmount.constructor === Object){
      setAmount(initialAmount)
     }
   
-    },[data,isSuccess,reduxAmount])
+    },[isSuccess])
     useEffect(()=>{
       dispatch(itemAmount(amount))
     },[amount])
@@ -66,8 +67,8 @@ const HandleCart = ({onClick , onClickR,item})=>{
           onClickR && clickR(item)
           },[onClickR])
          return (
-             <>
-             </>
+           <>
+           </>
          )
 
 }

@@ -3,6 +3,8 @@ import { useGetcommentsQuery } from '../../../services/shadnakapi'
     const {data , isSuccess,isError,refetch} = useGetcommentsQuery({key : 'productId' , id : id})   
     isError && refetch()
     const commentsNumber = useGetcommentsQuery({key : 'count' , id : id})
+    commentsNumber.isError && commentsNumber.refetch()
+    console.log(data)
     return (
         <>
          <div className = 'product-page-comment-container'>
