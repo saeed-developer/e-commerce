@@ -39,6 +39,7 @@ flex-wrap: wrap;
 .product-page-comment-container {
   width: 50%;
   align-self: center;
+  border-radius: 10%;
   flex-wrap: wrap;
   display: flex;
   background-color: ivory;
