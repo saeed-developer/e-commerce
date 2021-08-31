@@ -16,7 +16,11 @@ const HandleCart = ({onClick , onClickR,item})=>{
     
     const [amount, setAmount] = useState(initial) 
     const {isSuccess,data ,isError,refetch}  = useGetproductQuery('all')
-    isError && refetch()
+    isError &&
+    setInterval(() => {
+      refetch()
+    },1000);
+     
     function click(item){
       let price;
       if (item.price.onSale !=null){

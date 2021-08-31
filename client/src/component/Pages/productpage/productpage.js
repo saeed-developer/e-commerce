@@ -12,4 +12,5 @@ const ProductPage = ({id}) => {
        </>
     )
 }
+
 export default ProductPage

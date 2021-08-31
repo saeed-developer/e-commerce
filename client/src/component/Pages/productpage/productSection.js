@@ -8,7 +8,11 @@ const ProductSection = ({id}) => {
     const  {data,isSuccess,isError,refetch} = useGetproductQuery(id)
     const imgUrl = process.env.REACT_APP_URL + '/product-image?id=' + id + '.png'
     const amount = useSelector(state => state.counter.amount[id])
-    isError && refetch()
+    isError && 
+    setInterval(() => {
+        refetch() 
+    }, 1000);
+   
     const [click , setClick] = useState(false)
     const [clickR , setClickR] = useState(false)
     useEffect(() => {

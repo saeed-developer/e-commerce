@@ -10,7 +10,11 @@ const Product = ({img,info,onClick,onClickR}) => {
    const {data , isSuccess,isError,refetch} = useGeturlQuery()
    const amount = useSelector(state => state.counter.amount[info._id])
    let path;
-   isError && refetch() 
+   isError &&
+   setInterval(() => {
+     refetch()   
+   }, 1000);
+   
   if(isSuccess){ for(let x of data){
      if(x.productId ===info._id){
          path = x.path

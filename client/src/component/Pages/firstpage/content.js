@@ -84,7 +84,9 @@ export const SeconderyContent = () => {
           {data[1].name}
           </div> 
        </div>
-       }  {isError && refetch()}    
+       }  {isError && setInterval(()=>{
+         refetch()
+       },1000)}    
     </div>
     </>
   )

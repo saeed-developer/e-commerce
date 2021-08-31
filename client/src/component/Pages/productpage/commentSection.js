@@ -1,15 +1,25 @@
 import { useGetcommentsQuery } from '../../../services/shadnakapi';
-import { useRef } from 'react';
+import React from 'react';
+import PostComment from './postComment.js';
+import {BiReply} from 'react-icons/bi'
     const CommentSection = ({id}) => {
     const comment = useGetcommentsQuery({key : 'productId/comment', id : id})   
     const {data , isSuccess,isError,refetch} = useGetcommentsQuery({key : 'productId/review' , id : id})   
-    isError && refetch()
+    isError &&
+    setInterval(() => {
+        refetch()
+    }, 1000);
     const commentsNumber = useGetcommentsQuery({key : 'count' , id : id})
-    commentsNumber.isError && commentsNumber.refetch()
-    const ref = useRef(null)
+    commentsNumber.isError && 
+    setInterval(()=>{ 
+     commentsNumber.refetch()
+      
+    },1000)
+  
     function click(){
         ref.current.focus()
     }
+    const ref = React.createRef()
     return (
         <>
          <div className = 'product-page-comment-section-container'>
@@ -40,8 +50,7 @@ import { useRef } from 'react';
                      <p >{
                      data.content
                      }</p> 
-                     <p onClick ={click}>پاسخ</p>
-                      
+                     <p className = 'product-page-comment-answer' onClick ={click}> <BiReply/>پاسخ</p>
                   </div>
               )}
               else if (commentdata.length> 0){
@@ -55,7 +64,7 @@ import { useRef } from 'react';
                      <p >{
                      data.content
                      }</p> 
-                     <p onClick ={click}>پاسخ</p> 
+                     <p className = 'product-page-comment-answer' onClick ={click}><BiReply/>پاسخ</p> 
                   </div>
                   {
                       commentdata.map((data)=>{
@@ -68,17 +77,19 @@ import { useRef } from 'react';
                      <p >{
                      data.content
                      }</p> 
-                     <p onClick ={click}>پاسخ</p> 
+                     <p className = 'product-page-comment-answer' onClick ={click}> <BiReply/>پاسخ</p> 
                   </div>) 
                       })
                   }
+                
                 </div> 
+                 
               )}
               return value
-            })
+            }) 
             }
-        <input ref = {ref}/>
         </div>
+        <PostComment  ref = {ref}   />
         </>
     )
 }

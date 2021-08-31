@@ -40,7 +40,9 @@ const ShopPage = ()=>{
         setClickR(true)
         setItem(item)
       }}/>
-      })  }</div> }{isError &&  refetch()  }  
+      })  }</div> }{isError &&  setInterval(()=>{
+        refetch()
+      },1000) }  
      {
   showFooter&& <div className = 'shop-footer-container'  > 
  <Link className = 'shop-link-continue'  to = '/وارسی'><button className = 'shop-btn-continue'
