@@ -3,15 +3,15 @@ import { useState } from 'react';
 import {FaCheckSquare} from 'react-icons/fa'
 const PostComment= React.forwardRef((props, ref ) => 
     {
-     const [state, setstate] = useState({text:'',name:'',email:''})
+     const [state, setState] = useState({text:'',name:'',email:''})
      const [comment , setComment] = useState(null)
      function handleChange(e){
-        setstate({...state,[e.target.name]:e.target.value})
+        setState({...state,[e.target.name]:e.target.value})
      }
      function handleSubmit(e){
       console.log(state)
       e.preventDefault()
-      setstate({text:'',name:'',email:''})
+      setState({text:'',name:'',email:''})
       setComment(`${state.name}  عزیز نظر شما با موفقیت ثبت شد و بزودی نمایش داده میشود`)
      }
     return (

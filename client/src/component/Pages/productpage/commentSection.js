@@ -43,11 +43,11 @@ import {BiReply} from 'react-icons/bi'
               if(commentdata.length ===0) {value = ( 
                   
                   <div key = {data._id} className = "product-page-comment-container">
-                      <p  >{data.name}</p>
+                      <p>{data.name}</p>
                        
                       <p >{data.date.slice(0,index)}</p>
                       <div style = {{width:'100%'}}></div>
-                     <p >{
+                     <p>{
                      data.content
                      }</p> 
                      <p className = 'product-page-comment-answer' onClick ={click}> <BiReply/>پاسخ</p>

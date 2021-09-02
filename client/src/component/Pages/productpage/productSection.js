@@ -3,6 +3,7 @@ import { useGetproductQuery } from '../../../services/shadnakapi'
 import { useState,useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Button from '../../../stories/button';
+import {Link} from 'react-router-dom';
 import HandleCart from './handleCart';
 const ProductSection = ({id}) => {
     const  {data,isSuccess,isError,refetch} = useGetproductQuery(id)
@@ -41,10 +42,17 @@ const ProductSection = ({id}) => {
           }}/>
             
           {amount?
-              <Button margin = '0 1% 0 0' value = 'حذف از سبد خرید'  fontSize = '1.5vmax' width = '49%' onClick = {()=>{
+              <> 
+         <Link style = {{margin:'0 1% 0 0', width:'49%' , display:'inline-block'}}   to= '/وارسی'> <Button value = 'تسویه حساب '
+         width = '100%'  fontSize = '1.5vmax' /></Link> 
+         <Button margin = '1% 0 0 0'  value = 'حذف از سبد خرید'  fontSize = '1.5vmax'  width = '49%' onClick = {()=>{
              setClickR(true)
-          }}/>:null
+          }}/>
+
+          </>
+          :null
           }
+          
           </div>
           <p> تعداد :{amount}</p> 
           </div>
