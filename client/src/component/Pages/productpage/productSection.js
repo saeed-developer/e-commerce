@@ -13,7 +13,6 @@ const ProductSection = ({id}) => {
     setInterval(() => {
         refetch() 
     }, 1000);
-   
     const [click , setClick] = useState(false)
     const [clickR , setClickR] = useState(false)
     useEffect(() => {
@@ -34,33 +33,28 @@ const ProductSection = ({id}) => {
           <p>قیمت:</p>
            { 
               data[0].price.onSale ?<div > <p style = {{textDecoration :'line-through'}}>{data[0].price.original} تومان</p> 
-           <p> {data[0].price.onSale} تومان</p>  </div>:
-            <div><p> {data[0].price.original} تومان</p></div>}  
-             <div>
-         <Button value = 'افزودن به سبد خرید'  fontSize = '1.5vmax' width = '49%' onClick = {()=>{
+              <p> {data[0].price.onSale} تومان</p>  </div>:
+              <div><p> {data[0].price.original} تومان</p></div>}  
+            <div>
+             <Button value = 'افزودن به سبد خرید'  fontSize = '1.5vmax' width = '49%' onClick = {()=>{
              setClick(true)
-          }}/>
-            
-          {amount?
+            }}/>  
+             {amount?
               <> 
-         <Link style = {{margin:'0 1% 0 0', width:'49%' , display:'inline-block'}}   to= '/وارسی'> <Button value = 'تسویه حساب '
-         width = '100%'  fontSize = '1.5vmax' /></Link> 
-         <Button margin = '1% 0 0 0'  value = 'حذف از سبد خرید'  fontSize = '1.5vmax'  width = '49%' onClick = {()=>{
-             setClickR(true)
-          }}/>
-
-          </>
-          :null
+                <Link style = {{margin:'0 1% 0 0', width:'49%' , display:'inline-block'}}   to= '/وارسی'> <Button value = 'تسویه حساب '
+                width = '100%'  fontSize = '1.5vmax' /></Link> 
+                <Button margin = '1% 0 0 0'  value = 'حذف از سبد خرید'  fontSize = '1.5vmax'  width = '49%' onClick = {()=>{
+                setClickR(true)
+                }}/>
+              </>
+                :null
           }
-          
-          </div>
+           </div>
           <p> تعداد :{amount}</p> 
           </div>
-     </div>   
-     }     
-            
+         </div>   
+     }        
         </>
     )
 }
-
 export default ProductSection

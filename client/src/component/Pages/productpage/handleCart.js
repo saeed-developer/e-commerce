@@ -20,7 +20,6 @@ const HandleCart = ({onClick , onClickR,item})=>{
     setInterval(() => {
       refetch()
     },1000);
-     
     function click(item){
       let price;
       if (item.price.onSale !=null){

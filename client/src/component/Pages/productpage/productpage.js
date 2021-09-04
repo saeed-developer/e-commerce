@@ -6,10 +6,10 @@ import './styles.css';
 const ProductPage = ({id}) => {
     return (
         <>
-      <Header logosize = {'20%'} breakwidth = {'55%'} />
-      <ProductSection id =  {id}/ >
-      <CommentSection id = {id} />
-       </>
+            <Header logosize = {'20%'} breakwidth = {'55%'} />
+            <ProductSection id =  {id}/ >
+            <CommentSection id = {id} />
+        </>
     )
 }
 
