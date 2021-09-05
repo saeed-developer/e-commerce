@@ -23,13 +23,15 @@ const PostComment= React.forwardRef(({productId,data}, ref ) =>
          type = 'review'
          parentId = null
        }
-       else{
+       else {
          type = 'comment'
          if(cdata.parent_id != null)
         { 
           parentId = cdata.parent_id  
         }
-        else{parentId = cdata._id}
+        else {
+          parentId = cdata._id
+        }
       }
       
       axios.post(`${process.env.REACT_APP_URL}/comment`,{
@@ -48,7 +50,7 @@ const PostComment= React.forwardRef(({productId,data}, ref ) =>
           setCdata(null)
         }
       },err=>{
-       setComment({res:false ,content:err})
+       console.error(err)
       })
       e.preventDefault()
     

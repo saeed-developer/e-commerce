@@ -5,8 +5,9 @@ import { createProduct } from '../controllers/productPost.js'
 import { getProduct, getProductImage } from '../controllers/productGet.js'
 import { createUrl } from '../controllers/urlPost.js'
 import { getUrl } from '../controllers/urlGet.js'
+import { commentValidator } from '../validator/inputValidator.js'
 const router = express.Router()
-router.post('/comment',createcomment)
+router.post('/comment',commentValidator,createcomment)
 router.get('/comments',findcomments)
 router.post('/create-product',createProduct)//forproduct
 router.get('/products',getProduct)
