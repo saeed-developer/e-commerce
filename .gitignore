@@ -2,3 +2,10 @@
 **/node_modules
 .env
 server/images
+server/images/productpage
+client/public
+server/document.rtf
+client/myNote.txt
+client/document.rtf
+client/assets/Font
+client/images

@@ -38,9 +38,9 @@ const Header = ({logosize , breakwidth})=>{
     <Link  to = '/حساب-کاربری'  className = 'navlink' > 
     حساب کاربری
     </Link>
-    <Link  to = '/سبد-خرید'   className = 'navlink' > 
+   {/*<Link  to = '/سبد-خرید'   className = 'navlink' > 
     سبدخرید
-    </Link>
+    </Link>*/}
     <Link  to = '/مقالات'   className = 'navlink' > 
     مقالات
     </Link>  

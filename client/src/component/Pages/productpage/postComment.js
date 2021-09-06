@@ -50,12 +50,13 @@ const PostComment= React.forwardRef(({productId,data}, ref ) =>
           setCdata(null)
         }
       },err=>{
-       console.error(err)
+       console.error(err)//این ارور کاستومی که ساخته ام را نشان نمیدهد 
       })
       e.preventDefault()
     
      }
      const style = {direction:'rtl' , fontSize :'1.2vmax' , textAlign:'center' , marginTop:'2%'}
+     //درآینده نیاز به یک ولیدیت سمت فرانت هم دارم 
     return (
     <>
     

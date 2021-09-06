@@ -1,0 +1,31 @@
+.checkout-page-container{
+    direction: rtl;
+    display: flex;
+}
+
+.checkout-page-form{
+    direction: rtl;
+    width: 50%;
+    margin: 2% 1% 0% 0%;
+}
+.checkout-page-cart{
+    margin: 2% 1% 0% 1%;
+    direction: rtl;
+    width: 50%;
+    
+}
+@media (max-width:768px) and (orientation : portrait){
+    .checkout-page-container{
+        flex-direction: column;
+    }
+    .checkout-page-form{
+        width: 100%;
+        margin: 5% 0% 2% 2%;
+    }
+    .checkout-page-cart{
+        margin: 0% 0% 0% 2%;
+        width: 100%;
+    }
+
+
+}
