@@ -12,6 +12,7 @@
     margin: 2% 1% 0% 1%;
     direction: rtl;
     width: 50%;
+    background-color: ivory;
     
 }
 @media (max-width:768px) and (orientation : portrait){
@@ -28,4 +29,11 @@
     }
 
 
+}
+.checkout-page-cart-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
