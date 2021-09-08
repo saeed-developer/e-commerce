@@ -8,6 +8,7 @@ const Cart = () => {
   const product = useSelector(state => state.counter.amount)
   const total = useSelector(state => state.counter.total)
   let cart = []
+  
   if(isSuccess){
   for(let x in product){
     if (product[x] > 0){
@@ -30,19 +31,29 @@ const Cart = () => {
           </div>
           <hr ></hr>
 
-          {isSuccess && cart.map(item=>{
+          {isSuccess && 
+          cart.length > 0 &&
+          <table style = {{width:'100%' , fontSize:'1.3'}} >
+           <tr >
+             <th>کالا</th>
+             <th>تعداد</th>
+             <th> قیمت</th>
+           </tr>
+           {cart.map(item=>{
             const amount = item.amount
-            const price = item.price.onSale? Number(item.price.onSale) * Number(item.amount) + ' تومان':Number(item.price.original)*Number(item.amount)
-                    + ' تومان'
-          return (<div style = {{textAlign : 'center' , fontSize :'1.3vmax'}}> 
-                    <span>{item.name}</span>
-                    <span style = {{marginRight:'2%'}}>
-                    &#10005;
-                    {amount}
-                    </span>
-                   <div style = {{display:'inline' ,marginRight:'10%'}}> <span >{price}</span></div>
-                 </div>)
+            const price = item.price.onSale? Number(item.price.onSale) * Number(item.amount) :Number(item.price.original)*Number(item.amount)
+            
+          return (<tr style = {{textAlign : 'center' , fontSize :'1.3vmax'}}> 
+                    <td>{item.name}</td>
+                    <td >
+                    <input style = {{fontSize : '1.3vmax', width :'10%'}} value ={amount}  />
+                    </td>
+                   <td > {price} تومان</td>
+                 </tr>)
           })}
+          </table>
+          
+          }
           {isSuccess && 
           cart.length > 0 && (
           <div style = {{fontSize : '1.3vmax'}}><hr></hr>

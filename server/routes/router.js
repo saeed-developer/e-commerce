@@ -5,7 +5,8 @@ import { createProduct } from '../controllers/productPost.js'
 import { getProduct, getProductImage } from '../controllers/productGet.js'
 import { createUrl } from '../controllers/urlPost.js'
 import { getUrl } from '../controllers/urlGet.js'
-import { commentValidator } from '../validator/inputValidator.js'
+import { commentValidator , discountCodeValidator } from '../validator/inputValidator.js'
+import { discountCode } from '../controllers/discountCodePost.js'
 const router = express.Router()
 router.post('/comment',commentValidator,createcomment)
 router.get('/comments',findcomments)
@@ -14,4 +15,5 @@ router.get('/products',getProduct)
 router.get('/product-image',getProductImage)
 router.post('/create-url',createUrl)
 router.get('/get-url',getUrl)
+router.post('/discount-code',discountCodeValidator,discountCode)
 export default router

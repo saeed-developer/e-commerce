@@ -69,10 +69,7 @@ const HandleCart = ({onClick , onClickR,item})=>{
            
           onClickR && clickR(item)
           },[onClickR])
-         return (
-           <>
-           </>
-         )
+          return null
 
 }
 export default HandleCart
