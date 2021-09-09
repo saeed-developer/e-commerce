@@ -2,10 +2,7 @@
 **/node_modules
 .env
 server/images
-server/images/productpage
+server/images/product-page
 client/public
-server/document.rtf
-client/myNote.txt
-client/document.rtf
-client/assets/Font
-client/images
+client/assets/src/Font
+client/src/images
