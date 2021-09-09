@@ -4,15 +4,14 @@ import moment from 'jalali-moment'
 export const discountCode = async(req,res)=>{
       const dateNow  = new Date()
       const year = dateNow.getFullYear()
-      let month = dateNow.getMonth()
+      let month = dateNow.getMonth() + 1
       let day = dateNow.getDate()
-      if (String(month).length === 1) month = '0' + (month + 1)
+      if (String(month).length === 1) month = '0' + month 
       if (String(day).length === 1) day = '0' + day
       const today = year + '/' + month + '/' + day   
       const jalaliDate = moment(today, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')
       const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        console.log('err')
       return res.status(400).json({ errors: errors.array() }); 
     }
     try{
