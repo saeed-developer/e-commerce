@@ -1,8 +1,7 @@
 #ignoring node_modules
 **/node_modules
+**/images
+**/Font
 .env
-server/images
-server/images/product-page
-client/public
-client/assets/src/Font/
-client/src/images/
+
+
