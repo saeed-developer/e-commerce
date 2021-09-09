@@ -7,8 +7,8 @@ import {urlCreator} from './automation/urlCreator.js'
 config()
 
 const app = express()
-app.use(express.urlencoded({limit : '10Mb' , extended : true}))
-app.use (express.json({limit : '10Mb' , extended : true}))
+app.use(express.urlencoded({limit : '1Mb' , extended : true}))
+app.use (express.json({limit : '1Mb' , extended : true}))
 app.use(cors())
 app.use('/',router)
 const DB = process.env.DB
