@@ -17,12 +17,14 @@ export const discountCode = async(req,res)=>{
     }
     try{
         const {key} = req.query
-        console.log(key)
         const code = await discountCodeModel.find({'discountCode':key }).select('amount date')
+        if(code.length> 0){
         const {date} = code[0]
         const {amount} = code[0] 
         if (date >= jalaliDate) res.status(200).json({مبلغ:amount})
         else res.status(404).json({message : 'مهلت استفاده از کد شما اتمام یافته است'})
+      }
+        else  res.status(404).json({message:'کد تخفیف یافت نشد'})
     }
     catch(err){
         res.status(404).json({message : err.message})

@@ -7,6 +7,12 @@ import { createUrl } from '../controllers/urlPost.js'
 import { getUrl } from '../controllers/urlGet.js'
 import { commentValidator , discountCodeValidator } from '../validator/inputValidator.js'
 import { discountCode } from '../controllers/discountCodePost.js'
+import ratelimit from 'express-rate-limit'
+const limiter = ratelimit({
+    windowMs: 5 * 60 * 1000, 
+    max: 10,
+    message:'درخواست زیادی از آی پی شما ارسال شده است! چند دقیقه دیگر دوباره امتحان کنید'
+  });
 const router = express.Router()
 router.post('/comment',commentValidator,createcomment)
 router.get('/comments',findcomments)
@@ -15,5 +21,5 @@ router.get('/products',getProduct)
 router.get('/product-image',getProductImage)
 router.post('/create-url',createUrl)
 router.get('/get-url',getUrl)
-router.post('/discount-code',discountCodeValidator,discountCode)
+router.post('/discount-code',discountCodeValidator,limiter,discountCode)
 export default router
