@@ -3,6 +3,7 @@ import { increment,decrement, itemAmount } from './../../../features/cart/cartSl
 import { useDispatch,useSelector} from 'react-redux';
 import { useState , useEffect } from 'react';
 import { useGetproductQuery } from './../../../services/shadnakapi.js'
+//I should get redux from and save to local strorage
 const HandleCart = ({onClick , onClickR,item})=>{
     const dispatch = useDispatch()
     const reduxAmount = useSelector(state => state.counter.amount)
