@@ -32,5 +32,4 @@ export const shadnakApi =  createApi({
     },
   })
 export const { useGetcommentsQuery,usePostcommentQuery ,useGetproductQuery,useGeturlQuery} = shadnakApi
-//first I decided to use redux for geting image because of caching advantage but it took time to change binary to base64 and actually I didn't 
-//find good method to do it.
+
