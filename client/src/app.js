@@ -22,9 +22,10 @@ const ProductPage = React.lazy(()=>import ('./component/Pages/productpage/produc
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{ 
 const {data , isSuccess ,refetch , isError} = useGeturlQuery()
-isError && refetch()
-
-
+isError &&
+    setInterval(() => {
+        refetch()
+    }, 1000);
 return ( 
   <ThemeProvider theme = {Theme}>
     <StylesProvider jss={jss}> 
@@ -49,11 +50,7 @@ return (
         </Router> 
       </Typography>
     </StylesProvider>
-  </ThemeProvider>
-     
-    
-         
+  </ThemeProvider>        
 )
-
 }
 export default App
