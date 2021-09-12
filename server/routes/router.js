@@ -10,7 +10,7 @@ import { discountCode } from '../controllers/discountCodePost.js'
 import ratelimit from 'express-rate-limit'
 const limiter = ratelimit({
     windowMs: 5 * 60 * 1000, 
-    max: 10,
+    max: 1000,
     message:'درخواست زیادی از آی پی شما ارسال شده است! چند دقیقه دیگر دوباره امتحان کنید'
   });
 const router = express.Router()

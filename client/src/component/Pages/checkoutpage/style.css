@@ -1,3 +1,9 @@
+:root{
+    --green:#2FE92B;
+    --black:#0F0F0F;
+    --yellow:#e1bb23;
+    --red:#c92228;
+    }
 .checkout-page-container{
     direction: rtl;
     display: flex;
@@ -36,4 +42,14 @@
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+}
+.checkout-page-post-dicount-code{
+    background-color: var(--green);
+    border:1px solid var(--green);
+    color:white;
+    font-size:1.2vmax;
+    width: 10%;
+    cursor: pointer;
+    margin-right: 5%;
+    margin-top: 1%;
 }

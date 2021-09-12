@@ -16,6 +16,7 @@ export const discountCode = async(req,res)=>{
     }
     try{
         const {key} = req.query
+        console.log(key)
         const code = await discountCodeModel.find({'discountCode':key }).select('amount date')
         if(code.length> 0){
         const {date} = code[0]

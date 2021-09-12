@@ -1,15 +1,20 @@
 import {TiShoppingCart} from 'react-icons/ti'
 import { IconContext } from "react-icons";
 import { useSelector } from 'react-redux';
+import Button from './../../../stories/button.js'
+import {  useState } from 'react';
 import { useGetproductQuery } from '../../../services/shadnakapi'
-
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import {decrement} from '../../../features/cart/cartSlice.js';
 const Cart = () => {
+  const dispatch = useDispatch()
+  const [disCount,setDiscount] = useState('')
   const {data,isSuccess} = useGetproductQuery('all')
   const product = useSelector(state => state.counter.amount)
   const total = useSelector(state => state.counter.total)
   let cart = []
-  
-  if(isSuccess){
+ if(isSuccess){
   for(let x in product){
     if (product[x] > 0){
      for (let y of data){
@@ -19,6 +24,24 @@ const Cart = () => {
      }
      }
     }
+  }
+ 
+  const click = ()=>{
+   axios.post(`${process.env.REACT_APP_URL}/discount-code`,{},{
+     params :{
+       key :disCount
+     }
+   })
+   .then(res =>{
+    if(res.status === 200){
+     dispatch(decrement(Number(res.data.مبلغ)))
+    }}
+    
+    )
+   .catch(err => alert(err.response.data.message)) 
+  }
+  const change = (e)=>{
+  setDiscount(e.target.value)
   }
     return (
       <>
@@ -56,11 +79,15 @@ const Cart = () => {
           }
           {isSuccess && 
           cart.length > 0 && (
-          <div style = {{fontSize : '1.3vmax'}}><hr></hr>
+          <div style = {{fontSize : '1.3vmax'}}>
+            <hr></hr>
             <span> مجموع خرید :  </span>
             <span>{total} تومان</span>
             <span style = {{marginRight:'10%'}}> کد تخفیف:</span>
-            <input style = {{marginRight:'5%' , fontSize : '1.3vmax'}}></input>
+            <input value = {disCount} onChange = {change}    style = {{marginRight:'2%' , fontSize : '1.2vmax' ,width:'20%'}}></input>
+            <span style = {{marginRight:'2%' , fontSize : '1.2vmax' ,width:'20%' , display : 'inline-block'}}>
+            <Button value = 'ثبت' onClick = {click} />
+            </span>
           </div>
           )
           }

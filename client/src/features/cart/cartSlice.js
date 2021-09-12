@@ -17,8 +17,10 @@ export const counterSlice = createSlice({ //I think threre is no need to export
       },
       itemAmount:(state,action)=>{
       state.amount =  action.payload
-    }
     },
+   
+    },
+      
     
   })
   
