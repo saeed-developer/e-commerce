@@ -1,7 +1,5 @@
 import urlModel from './../models/url.js'
 import productModel from "./../models/products.js";
-
-
  export const  urlCreator = async(req,res)=>{
     try{
     const productUrl = await urlModel.find()
