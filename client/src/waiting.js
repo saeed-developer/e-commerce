@@ -12,11 +12,6 @@ const style = {
 const Waiting =  (
 <div style = {style}>
 <p>  منتظر بمانید  </p>
-</div>)
-  
-   
-        
-    
-
-
+</div>
+)
 export default Waiting
