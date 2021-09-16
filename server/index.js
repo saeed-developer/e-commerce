@@ -15,7 +15,7 @@ const DB = process.env.DB
 const Port = process.env.PORT || 3000
 mongoose.connect(DB, {useNewUrlParser : true , useUnifiedTopology : true})
 .then(()=> app.listen(Port ,
-    urlCreator(),
+    urlCreator(), 
     console.log(`connected to database and server is listening on port ${Port}`)))
 .catch((err)=> console.log(err.message))
 mongoose.set('useFindAndModify',false)

@@ -14,7 +14,6 @@ const ShopPage = React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js
 const ArticlesPage = React.lazy(()=> import ('./component/Pages/articles/articlespage.js'));
 const AboutPage = React.lazy(()=> import ('./component/Pages/aboutpage/aboutpage.js'));
 const AccountPage = React.lazy(()=> import('./component/Pages/accountpage/accountpage.js')); 
-const CartPage = React.lazy(()=> import('./component/Pages/cartpage/cartpage.js'))
 const Guidepage = React.lazy(()=> import('./component/Pages/guidepage/guidepage.js')); 
 const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js'));
 const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/checkoutpage.js'))
@@ -37,7 +36,6 @@ return (
                <Route path = '/فروشگاه-شادناک' component = {ShopPage} exact/>  
                <Route path = '/تماس-باما' component = {ContactPage} /> 
                <Route path = '/درباره-ما' component = {AboutPage} /> 
-               <Route path = '/سبد-خرید' component = {CartPage} /> 
                <Route path = '/حساب-کاربری' component = {AccountPage} /> 
                <Route path = '/مقالات' component = {ArticlesPage} /> 
                <Route path = '/راهنمای-خرید' component = {Guidepage}/>
