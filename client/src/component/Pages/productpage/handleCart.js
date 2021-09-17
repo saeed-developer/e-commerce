@@ -30,7 +30,7 @@ const HandleCart = ({onClick , onClickR,item})=>{
       price = item.price.original
     }
      dispatch(increment( price ))
-     let addition = amount[item._id] + 1
+     let addition = Number(amount[item._id]) + 1
      setAmount({...amount,[item._id]:addition})  
   }
   function clickR(item){
@@ -42,7 +42,7 @@ const HandleCart = ({onClick , onClickR,item})=>{
     price = item.price.original
   }
   dispatch(decrement(price))
-  let subtract = amount[item._id]- 1
+  let subtract = Number(amount[item._id]- 1)
   
   setAmount( {...amount,[item._id]:subtract})
   } 
