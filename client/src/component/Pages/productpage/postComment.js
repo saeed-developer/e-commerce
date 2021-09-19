@@ -50,7 +50,10 @@ const PostComment= React.forwardRef(({productId,data}, ref ) =>
           setCdata(null)
         }
       },err=>{
-       console.error(err)//این ارور کاستومی که ساخته ام را نشان نمیدهد 
+        const error = err.response.data.errors[0].msg
+       if(error)alert(error)
+       else alert('خطایی رخ داد دوباره تلاش کنید')
+        
       })
       e.preventDefault()
     
