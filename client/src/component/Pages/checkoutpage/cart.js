@@ -49,8 +49,13 @@ for(let x in product){
     }}
     
     )
-   .catch(err =>
-    err.response.data.message ?alert(err.response.data.message):alert('ورودی نامعتبر')
+   .catch(err =>{
+    const error = err.response.data.message
+    console.log(error)
+    if (error) alert(error)
+    else if(err.response.data.errors[0].msg) alert(err.response.data.errors[0].msg)
+    else alert('خطایی رخ داده است') 
+     }
     ) 
   }
   const change = (e)=>{
