@@ -1,7 +1,7 @@
 
 import React from "react"
 import { useState } from "react"
-const Button = ({width,fontSize,value,margin , onClick}) => {
+const Button = ({width,fontSize,value,margin , onClick ,type}) => {
     const [style ,setStyle] = useState({
             width: width||'50%' ,
             margin: margin || '0',
@@ -13,7 +13,7 @@ const Button = ({width,fontSize,value,margin , onClick}) => {
    
     return (
        
-        <button onClick = {onClick} style = {style}  onMouseOver= {()=>{
+        <button onClick = {onClick} style = {style} type = {type}  onMouseOver= {()=>{
        setStyle({...style,color:'#e1bb23',backgroundColor:'inherit' ,cursor:'pointer'})
         }} onMouseLeave = {()=>{
             setStyle({...style,color:'white',backgroundColor:'#2FE92B'}) 
