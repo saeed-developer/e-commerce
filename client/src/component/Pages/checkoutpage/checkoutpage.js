@@ -3,6 +3,7 @@ import Form from './form'
 import Cart from './cart'
 import './style.css'
 import Header from './../firstpage/header.js'
+//باید چک کنم اگر موبایل بود اول کارت قرار بگیرد بعد فرم
 const Checkoutpage = () => {
     return (
         <>
