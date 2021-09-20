@@ -53,3 +53,9 @@
     margin-right: 5%;
     margin-top: 1%;
 }
+.checkout-page-form{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5vmax;
+}
+
