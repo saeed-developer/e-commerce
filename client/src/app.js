@@ -5,19 +5,20 @@ import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset,ThemeProvider } from '@material-ui/core/styles';
 import Theme from './assets/CustomTheme.js';
 import './assets/Font/IranSans/IRANSans.ttf'
-import { Typography } from '@material-ui/core';
+import {  Typography } from '@material-ui/core';
 import Waiting from './waiting.js';
 import {useGeturlQuery } from './services/shadnakapi.js';
-
-const FirstPage = React.lazy(()=>import ('./component/Pages/firstpage/firstpage.js'));
-const ShopPage = React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js'));
-const ArticlesPage = React.lazy(()=> import ('./component/Pages/articles/articlespage.js'));
-const AboutPage = React.lazy(()=> import ('./component/Pages/aboutpage/aboutpage.js'));
-const AccountPage = React.lazy(()=> import('./component/Pages/accountpage/accountpage.js')); 
-const Guidepage = React.lazy(()=> import('./component/Pages/guidepage/guidepage.js')); 
-const ContactPage = React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js'));
-const Checkoutpage = React.lazy (()=> import ('./component/Pages/checkoutpage/checkoutpage.js'))
-const ProductPage = React.lazy(()=>import ('./component/Pages/productpage/productpage'))
+const pages = {
+  FirstPage :  React.lazy(()=>import ('./component/Pages/firstpage/firstpage.js')),
+  ShopPage:React.lazy(()=> import ('./component/Pages/shoppage/shoppage.js')),
+  ArticlesPage: React.lazy(()=> import ('./component/Pages/articles/articlespage.js')),
+  AboutPage : React.lazy(()=> import ('./component/Pages/aboutpage/aboutpage.js')),
+  AccountPage :React.lazy(()=> import('./component/Pages/accountpage/accountpage.js')),
+  Guidepage:React.lazy(()=> import('./component/Pages/guidepage/guidepage.js')),
+  ContactPage : React.lazy(()=> import ('./component/Pages/contactpage/contactpage.js')),
+  Checkoutpage : React.lazy (()=> import ('./component/Pages/checkoutpage/checkoutpage.js')),
+}
+const ProductPage  =  React.lazy(()=>import ('./component/Pages/productpage/productpage'))
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 const App = ()=>{ 
 const {data , isSuccess ,refetch , isError} = useGeturlQuery()
@@ -25,6 +26,8 @@ isError &&
     setInterval(() => {
         refetch()
     }, 1000);
+
+   
 return ( 
   <ThemeProvider theme = {Theme}>
     <StylesProvider jss={jss}> 
@@ -32,17 +35,15 @@ return (
         <Router>
            <Suspense fallback= {Waiting}>
              <Switch>
-               <Route path = '/' component = {FirstPage}  exact/> 
-               <Route path = '/فروشگاه-شادناک' component = {ShopPage} exact/>  
-               <Route path = '/تماس-باما' component = {ContactPage} /> 
-               <Route path = '/درباره-ما' component = {AboutPage} /> 
-               <Route path = '/حساب-کاربری' component = {AccountPage} /> 
-               <Route path = '/مقالات' component = {ArticlesPage} /> 
-               <Route path = '/راهنمای-خرید' component = {Guidepage}/>
-               <Route path = '/وارسی' component = {Checkoutpage}/>
                {isSuccess && data.map((item)=>{
-                 return <Route path = {item.path} key = {item._id} > <ProductPage id = {item.productId}  /> </Route>
-               })}
+                 if(item.pathName === 'ProductPage'){
+                 return < Route path = {item.path} key = {item._id} > <ProductPage id = {item.productId}  /> </Route>}
+                 else {
+                   const {pathName} = item
+                   return <Route path = {item.path} key = {item._id}  component = {pages[pathName]} exact />
+                 }
+               }
+               )}
              </Switch>
             </Suspense>    
         </Router> 
