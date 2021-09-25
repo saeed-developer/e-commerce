@@ -8,6 +8,7 @@ import { getUrl } from '../controllers/urlGet.js'
 import { commentValidator , discountCodeValidator } from '../validator/inputValidator.js'
 import { discountCode } from '../controllers/discountCodePost.js'
 import { postCities } from '../controllers/citiesPost.js'
+import { getCities } from '../controllers/citiesGet.js'
 import ratelimit from 'express-rate-limit'
 const limiter = ratelimit({
     windowMs: 5 * 60 * 1000, 
@@ -24,4 +25,5 @@ router.post('/create-url',createUrl)
 router.get('/get-url',getUrl)
 router.post('/discount-code',discountCodeValidator,limiter,discountCode)
 router.post('/post-cities',postCities)
+router.get('/get-cities', getCities)
 export default router
