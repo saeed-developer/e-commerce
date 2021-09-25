@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Button from '../../../stories/button'
+import { useGetcitiesQuery } from '../../../services/shadnakapi'
 const Form = () => {
     const [form , setForm] = useState(()=> {return {
         name : '',
@@ -12,31 +13,35 @@ const Form = () => {
         email:'',
         text:'',
     }})
+    const [hint , setHint] = useState(null)
+    
+    const {data,isSuccess,isError,refetch} = useGetcitiesQuery({key : 'all'})
+    isError && setInterval(()=>{
+     refetch()
+    },1000)
+    
+
+   
     const handleChnage = (e)=>{
      setForm({...form,[e.target.name]:e.target.value})
     }
-    const cityHint = ()=>{
-
-    }
-    useEffect(()=>{
-     const url = process.env.REACT_APP_URl + '/provinces'  
-     axios.post(url)
-     .then(res => console.log(res),err => console.error(err))
-    },[])
-    useEffect(()=>{
-     if (form.province !== ''){
-         const url = process.env.REACT_APP_URl + '/cities'
-         axios.post(url,null, {
-             params:{
-                 key : form.province
-             }
-         })
-         .then(res => {
-            console.log(res)},err => console.err(err))
+const cityHint = ()=>{
+    {/* این فانکشن قرار است هینت شهر را با توجه به استان انتخابی و حروف وارد شده به کاربرد بدهد*/ }
+ if(isSuccess === true && form.province.length > 0 && form.city.length > 0){
+     for (let x of data){
+         if(x.province === form.province){
+           for (let y of x.cities){
+             if(y.startsWith(form.city)) setHint(y)
+           }
+         }
      }
-    },[form.province])
+ }
+    }
+
+    useEffect(()=>{
+    cityHint()
+    },[form.city])
     const handleSubmit = (e)=>{
-        console.log('tr')
      const url = process.env.REACT_APP_URl + '/form'
      axios.post(url,form)
      .then(res =>console.log( res), err => console.error(err))
@@ -56,13 +61,16 @@ const Form = () => {
                <label>استان</label>
                <select
                value= {form.province}
-               name = 'name'
+               name = 'province'
                onChange = {(e)=> handleChnage(e)}
                >
-              {/* لیست استان از بک اند ‌+ گرفتن لیست شهرهای استان و هینت کردن آن در شهر */}
+             {isSuccess && data.map(item =>{
+                 return <option key = {item._id} > {item.province} </option>
+             })} 
              </select>
-             <label>شهر </label>
-                   <input 
+             <label>شهر</label>
+             {/*<label htmlFor = 'input'>{hint}</label> باید استایل دهی شود تا در اینپوت به صورت کمرنگ نمایش داده شود*/}
+                   <input
                    type = 'text'
                    value= {form.city}
                    name = 'city'
