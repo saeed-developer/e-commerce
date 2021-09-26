@@ -1,4 +1,3 @@
-//this component is work but it's not responsive so I should change css code and maybe rewrite it!
 import {React} from 'react';
 import Slider from "react-slick";
 import './../../../../node_modules/slick-carousel/slick/slick.css';
