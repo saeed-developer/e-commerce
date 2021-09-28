@@ -27,7 +27,7 @@
     }
     .checkout-page-form{
         width: 100%;
-        margin: 5% 0% 2% 2%;
+        margin: 0;
     }
     .checkout-page-cart{
         margin: 0% 0% 0% 2%;
@@ -57,5 +57,11 @@
     display: flex;
     flex-direction: column;
     font-size: 1.5vmax;
+}
+.checkout-page-form > input{
+    font-size: 1.3vmax;
+}
+.checkout-page-form-city-hint{
+opacity: .5;
 }
 
