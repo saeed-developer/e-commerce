@@ -5,7 +5,7 @@ import { useGetcitiesQuery } from '../../../services/shadnakapi'
 const Form = () => {
     const [form , setForm] = useState(()=> {return {
         name : '',
-        province: '',
+        province: 'تهران',
         city:'',
         address:'',
         postal:'',
@@ -19,14 +19,10 @@ const Form = () => {
     isError && setInterval(()=>{
      refetch()
     },1000)
-    
-
-   
     const handleChnage = (e)=>{
      setForm({...form,[e.target.name]:e.target.value})
     }
 const cityHint = ()=>{
-    {/* این فانکشن قرار است هینت شهر را با توجه به استان انتخابی و حروف وارد شده به کاربرد بدهد*/ }
  if(isSuccess === true && form.province.length > 0 && form.city.length > 0){
      for (let x of data){
          if(x.province === form.province){
@@ -36,10 +32,13 @@ const cityHint = ()=>{
          }
      }
  }
+ else setHint('')
     }
+   
 
     useEffect(()=>{
     cityHint()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[form.city])
     const handleSubmit = (e)=>{
      const url = process.env.REACT_APP_URl + '/form'
@@ -64,12 +63,12 @@ const cityHint = ()=>{
                name = 'province'
                onChange = {(e)=> handleChnage(e)}
                >
-             {isSuccess && data.map(item =>{
-                 return <option key = {item._id} > {item.province} </option>
+             {isSuccess && data.map(item =>{ 
+                 return <option style = {{fontSize : '1.2vmax'}} key = {item._id} > {item.province} </option>
              })} 
              </select>
              <label>شهر</label>
-             {/*<label htmlFor = 'input'>{hint}</label> باید استایل دهی شود تا در اینپوت به صورت کمرنگ نمایش داده شود*/}
+             <label className = 'checkout-page-form-city-hint' htmlFor = 'input'>{hint}</label> 
                    <input
                    type = 'text'
                    value= {form.city}
