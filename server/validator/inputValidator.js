@@ -7,3 +7,4 @@ body('name').isLength({max : 50}).withMessage('اسم نامعتبر') ,
     body('email').isEmail().withMessage('ایمیلی که وارد کردید نامعتبر است'),
 ]
 export const discountCodeValidator = [query('key').trim().isLength({min : 6}).isAlphanumeric()]
+export const orderValidator = []
