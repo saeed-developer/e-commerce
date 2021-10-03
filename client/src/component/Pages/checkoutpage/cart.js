@@ -6,7 +6,7 @@ import {  useState  , useEffect} from 'react';
 import { useGetproductQuery } from '../../../services/shadnakapi'
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import {decrement , increment, itemAmount} from '../../../features/cart/cartSlice.js';
+import {decrement , increment, itemAmount,discount} from '../../../features/cart/cartSlice.js';
 import {AiFillCloseSquare} from 'react-icons/ai';
 const Cart = () => {
   const dispatch = useDispatch()
@@ -45,6 +45,7 @@ for(let x in product){
     if(res.status === 200){
      dispatch(decrement(Number(res.data.مبلغ)))
      setIsdDiscount(res.data.مبلغ)
+     dispatch(discount({code : disCount , amount : res.data.مبلغ}))
      setDiscount('')
     }}
     
@@ -137,6 +138,7 @@ for(let x in product){
              <span>میزان تخفیف:  </span>
              <span style = {{display : 'inline-block' }}>{isDiscount}</span>
              <AiFillCloseSquare onClick = {()=>{
+               dispatch(discount({}))
                dispatch(increment(Number(isDiscount)))
                setIsdDiscount(0)
              }}/>
