@@ -44,7 +44,8 @@ orderNumber : {
 },
 discount:{
  isCode : {type : Boolean , required: true},
- code : {type : String , trim : true}
+ code : {type : String , trim : true},
+ amount : {type : String , trim : true}
 },
 product : {
     type : Array,
