@@ -3,7 +3,8 @@ export const counterSlice = createSlice({ //I think threre is no need to export
     name: 'counter',
     initialState: {
       amount:{},
-      total:0
+      total:0,
+      discount :{}
     },
     reducers: {
       increment: (state,action) => {
@@ -15,15 +16,19 @@ export const counterSlice = createSlice({ //I think threre is no need to export
         state.total -= action.payload
       }
       },
+
       itemAmount:(state,action)=>{
       state.amount =  action.payload
     },
+    discount : (state, action)=>{
+      state.discount = action.payload
+    }
    
     },
       
     
   })
   
-  export const { increment, decrement, itemAmount} = counterSlice.actions
+  export const { increment, decrement, itemAmount,discount} = counterSlice.actions
   
   export default counterSlice.reducer
