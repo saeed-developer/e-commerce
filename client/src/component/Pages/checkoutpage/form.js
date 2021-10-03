@@ -2,16 +2,20 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Button from '../../../stories/button'
 import { useGetcitiesQuery } from '../../../services/shadnakapi'
+import { useSelector } from 'react-redux'
+import { discount } from '../../../features/cart/cartSlice'
+import { useDispatch } from 'react-redux'
 const Form = () => {
+    const dispatch = useDispatch()
     const [form , setForm] = useState(()=> {return {
         name : '',
         province: 'تهران',
         city:'',
         address:'',
-        postal:'',
+        postalCode:'',
         phone: '',
         email:'',
-        text:'',
+        explination:'',
     }})
     const [hint , setHint] = useState(null)
     
@@ -34,16 +38,33 @@ const cityHint = ()=>{
  }
  else setHint('')
     }
-   
-
+     const product =  useSelector(state => state.counter.amount)
+     const total = useSelector(state => state.counter.total)
+     const discount = useSelector(state => state.counter.discount)
     useEffect(()=>{
     cityHint()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[form.city])
     const handleSubmit = (e)=>{
-     const url = process.env.REACT_APP_URl + '/form'
-     axios.post(url,form)
-     .then(res =>console.log( res), err => console.error(err))
+     const url = `${process.env.REACT_APP_URL}/post-order`
+     const order = {...form}
+     const cart = []
+     for(let x in product){
+       if(product[x] > 0){
+         cart.push({[x] : product[x]})
+       }
+     }
+    
+     order.product = cart
+     order.total  = total
+     if(Object.keys(discount).length === 0) order.discount = {isCode : false}
+     else order.discount ={isCode : true , ...discount}
+     
+     console.log(order)
+     
+     axios.post(url,order)
+     dispatch({})
+     .then(res => console.log(res),err => console.error(err))
      e.preventDefault()
     }
     return (
@@ -62,6 +83,7 @@ const cityHint = ()=>{
                value= {form.province}
                name = 'province'
                onChange = {(e)=> handleChnage(e)}
+               style = {{fontSize : '1.2vmax'}}
                >
              {isSuccess && data.map(item =>{ 
                  return <option style = {{fontSize : '1.2vmax'}} key = {item._id} > {item.province} </option>
