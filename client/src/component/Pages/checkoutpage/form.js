@@ -92,6 +92,7 @@ const cityHint = ()=>{
              <label>شهر</label>
              <label className = 'checkout-page-form-city-hint' htmlFor = 'input'>{hint}</label> 
                    <input
+                   onBlur = {()=>{setHint('')}}
                    type = 'text'
                    value= {form.city}
                    name = 'city'
@@ -104,14 +105,14 @@ const cityHint = ()=>{
                    name = 'address'
                    onChange = {(e)=> handleChnage(e)}
                    />
-                     <label> (بااعدادانگلیسی و بدون فاصله)کد پستی</label>
+                     <label> کد پستی</label>
                    <input 
                    type = 'text'
-                   value= {form.postal}
-                   name = 'postal'
+                   value= {form.postalCode}
+                   name = 'postalCode'
                    onChange = {(e)=> handleChnage(e)}
                    />
-                     <label> (بااعدادانگلیسی و بدون فاصله)تلفن همراه</label>
+                     <label>تلفن همراه</label>
                    <input 
                    type = 'text'
                    value= {form.phone}
