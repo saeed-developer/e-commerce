@@ -38,15 +38,6 @@ date : {
     type : Date,
     default:new Date()
 },
-orderNumber : {
-    type : Number,
-    required:true
-},
-discount:{
- isCode : {type : Boolean , required: true},
- code : {type : String , trim : true},
- amount : {type : String , trim : true}
-},
 product : {
     type : Array,
     required : true
@@ -55,6 +46,17 @@ total: {
     type : Number,
     required : true
 },
+discount:{
+ isCode : {type : Boolean , required: true},
+ code : {type : String , trim : true},
+ amount : {type : String , trim : true}
+},
+orderNumber : {
+    type : Number,
+    required:true
+    
+},
+
 paid:{
     isPaid : {type : Boolean , required : true},
     code : {type : String , trim : true}
