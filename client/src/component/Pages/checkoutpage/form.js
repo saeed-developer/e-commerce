@@ -40,7 +40,7 @@ const cityHint = ()=>{
     }
      const product =  useSelector(state => state.counter.amount)
      const total = useSelector(state => state.counter.total)
-     const discount = useSelector(state => state.counter.discount)
+     const disCount = useSelector(state => state.counter.discount)
     useEffect(()=>{
     cityHint()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -57,14 +57,13 @@ const cityHint = ()=>{
     
      order.product = cart
      order.total  = total
-     if(Object.keys(discount).length === 0) order.discount = {isCode : false}
-     else order.discount ={isCode : true , ...discount}
-     
-     console.log(order)
-     
+     if(Object.keys(disCount).length === 0) order.discount = {isCode : false}
+     else order.discount ={isCode : true , ...disCount}
      axios.post(url,order)
-     dispatch({})
-     .then(res => console.log(res),err => console.error(err))
+     .then(res => console.log(res),err => alert(` errorcode  ${err.response.status}
+     errormessage: ${err.response.data.message}
+     `))
+     dispatch(discount({}))
      e.preventDefault()
     }
     return (
