@@ -1,4 +1,6 @@
 import orderModel from "../models/order.js";
+import productModel from '../models/products.js';
+import discountCodeModel from "../models/discountCode.js";
 import {app} from './../app.js'
 export const postOrder = async(req,res)=>{
     let body = req.body
@@ -26,14 +28,15 @@ export const postOrder = async(req,res)=>{
     }
     body.paid = {isPaid : false}
     const newOrder = new orderModel(body)
+   
     try{
-     console.log(body)
      await newOrder.save()
+     res.status(200).json({orderNumber : orderNubmer})
      orderNubmer++
      app.set('orderNumber',orderNubmer)
-     res.status(200)
+     
     }
     catch(err){
-        res.status(500).json({message : err.message})
+        res.status(403).json({message : err.message})
     }
 }
