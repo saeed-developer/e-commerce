@@ -2,6 +2,7 @@ import orderModel from "../models/order.js";
 import productModel from '../models/products.js';
 import discountCodeModel from "../models/discountCode.js";
 import {app} from './../app.js'
+import { newOrder } from "../subscribers/sms.js";
 export const postOrder = async(req,res)=>{
     let body = req.body
     let orderNubmer;
@@ -27,11 +28,12 @@ export const postOrder = async(req,res)=>{
         body.orderNumber = num
     }
     body.paid = {isPaid : false}
-    const newOrder = new orderModel(body)
+    const orderForm = new orderModel(body)
    
     try{
-     await newOrder.save()
+     await orderForm.save()
      res.status(200).json({orderNumber : orderNubmer})
+     newOrder.emit('newOrder',orderForm)
      orderNubmer++
      app.set('orderNumber',orderNubmer)
      
