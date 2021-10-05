@@ -60,9 +60,18 @@ const cityHint = ()=>{
      if(Object.keys(disCount).length === 0) order.discount = {isCode : false}
      else order.discount ={isCode : true , ...disCount}
      axios.post(url,order)
-     .then(res => console.log(res),err => alert(` errorcode  ${err.response.status}
+     .then(res => console.log(res)
+     ,err => alert(` errorcode  ${err.response.status}
      errormessage: ${err.response.data.message}
      `))
+     setForm(  {  name : '',
+     province: 'تهران',
+     city:'',
+     address:'',
+     postalCode:'',
+     phone: '',
+     email:'',
+     explination:''})
      dispatch(discount({}))
      e.preventDefault()
     }
