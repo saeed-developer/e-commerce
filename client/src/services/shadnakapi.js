@@ -24,9 +24,10 @@ export const shadnakApi =  createApi({
         getproduct:build.query({query:(id)=>({url:'/products',method:'get', params:{id:id}})
         }),
       geturl:build.query({query:(value)=>({url:'/get-url',method:'get',params:{key:value}}) }),
-      getcities : build.query({query: (value)=>({url:'/get-cities',method:'get' ,params:{key : value.key,province : value.province}})})
+      getcities : build.query({query: (value)=>({url:'/get-cities',method:'get' ,params:{key : value.key,province : value.province}})}),
+      getcontent : build.query({query : (value)=>({url:'/get-content',method:'get',params:{key:value.key,province:value.province}})})
       }
     },
   })
-export const { useGetcommentsQuery,useGetproductQuery,useGeturlQuery,useGetcitiesQuery} = shadnakApi
+export const { useGetcommentsQuery,useGetproductQuery,useGeturlQuery,useGetcitiesQuery,useGetcontentQuery} = shadnakApi
 
