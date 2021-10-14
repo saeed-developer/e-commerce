@@ -46,7 +46,7 @@ return (
   <img className="slick-slide-image" src={three} alt = 'زعفران سرگل شادناک' />
   <label className="slick-slide-label">زعفران سرگل شادناک</label>
   <label className="slick-slide-label-2">زعفران شادناک محصولی از قاینات است که بدون واسطه بدست شما میرسد</label>
-  <button className = 'btn'><Link style = {{color : 'black',textDecoration:'none'}} to = '/فروشگاه-شادناک ' >
+  <button className = 'btn'><Link style = {{color : 'black',textDecoration:'none'}} to = '/فروشگاه-آنلاین' >
       خرید آنلاین
      </Link>
   </button>
