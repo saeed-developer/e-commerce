@@ -29,7 +29,7 @@ export const PrimaryContent = () => {
         </div>   
     )
 }
-export const SeconderyContent = () => {
+export const SeconderyContent = ({content}) => {
   const {data,isSuccess,isError,refetch} = useGetcommentsQuery({id:["6106a5c48e830dd4ff96ecf4" ,"6106a5c48e830dd4ff96ecf5"]} )
   const { ref, inView } = useInView(
     {
@@ -70,9 +70,8 @@ export const SeconderyContent = () => {
   return ( 
     <>
     <div ref = {ref} className = 'seconderycontent'>
-      <p > درباره ما</p>
-      <p> ما برآنیم که محصولات درجه یک قائنات را بدون واسطه از کشاورز بدست شما  برسانیم </p>
-      <button> اطلاعات بیشتر</button>  
+    {content}
+     
     </div>
     <div ref = {ref2} className = 'seconderycontent2' >
       <div> نظر خریداران</div>
