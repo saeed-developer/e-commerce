@@ -6,7 +6,6 @@ import router from './routes/router.js'
 import { config } from 'dotenv' 
 import {urlCreator} from './scripts/urlCreator.js'
 import {subscribers} from './subscribers/subscriber.js'
-import {newOrder} from './subscribers/sms.js'
 config({path: './config/.env'})
 app.use(express.urlencoded({limit : '1Mb' , extended : true}))
 app.use (express.json({limit : '1Mb' , extended : true}))

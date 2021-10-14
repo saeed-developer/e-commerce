@@ -10,6 +10,8 @@ import { discountCode } from '../controllers/discountCodePost.js'
 import { postCities } from '../controllers/citiesPost.js'
 import { getCities } from '../controllers/citiesGet.js'
 import {postOrder} from '../controllers/orderPost.js'
+import { postContent } from '../controllers/contentPost.js'
+import { getContent } from '../controllers/contentGet.js'
 import ratelimit from 'express-rate-limit'
 import { orderValidator } from '../validator/inputValidator.js'
 const limiter = ratelimit({
@@ -29,4 +31,6 @@ router.post('/discount-code',discountCodeValidator,limiter,discountCode)
 router.post('/post-cities',postCities)
 router.get('/get-cities', getCities)
 router.post('/post-order',postOrder)
+router.post('/post-content',postContent)
+router.get('/get-content',getContent)
 export default router
