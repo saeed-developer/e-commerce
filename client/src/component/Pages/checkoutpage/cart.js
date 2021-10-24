@@ -103,7 +103,7 @@ for(let x in product){
 
           {isSuccess && 
           cart.length > 0 &&
-          <table style = {{width:'100%' , fontSize:'1.3'}} >
+          <table style = {{width:'100%' , fontSize:'1.3vmax'}} >
             <thead>
              <tr>
              <th>کالا</th>
