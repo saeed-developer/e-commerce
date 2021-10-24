@@ -1,0 +1,54 @@
+.account-page-container{
+display:relative;
+width: 100%;
+height: auto;
+direction: rtl;
+font-size: 3vmax;
+overflow: hidden;
+}
+.account-page-signup{
+    position: absolute;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    font-size: 30px;
+    background-color: ivory;
+    top: 25%;
+    left: 25%;
+    display: absolute;
+}
+.account-page-login{
+    position: absolute;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    font-size: 30px;
+    background-color: ivory;
+    top: 25%;
+    left: 25%;
+    display: absolute;
+}
+.account-page-container :first-child {   
+  position: absolute;
+  right:30%;
+  top: 50%;
+  cursor: pointer;
+}
+.account-page-container :nth-child(2){
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    cursor: pointer;
+}
+.account-page-signup-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size:1.5vmax;
+    
+}
+.account-page-signup-form > input{
+    max-width: 50%;
+}
