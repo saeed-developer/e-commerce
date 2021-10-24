@@ -251,7 +251,7 @@ font-size: 1.2vmax;
 }
 #footeritem4 :nth-child(2){
   text-decoration:none;
-  color:#e1bb23 ;
+  color:var(--yellow) ;
    font-size: 1.2vmax ;
    cursor:pointer
 }
