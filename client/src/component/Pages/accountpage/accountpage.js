@@ -15,17 +15,27 @@ const AccountPage = ()=>{
         setForm({...form, [e.target.name] : e.target.value})
     }
     const submit = (e,param)=>{
-    if(param ==='signup') {axios.post(process.env.REACT_APP_URL + '/post-signup',form).then( res =>  setForm({
-        email : '',
-        password : '',
-    }),err =>alert(err) )
+    if(param ==='signup') {axios.post(process.env.REACT_APP_URL + '/post-signup',form).then( res => {
+        if(res.status === 200){ alert(res.data.message)
+        setForm({
+            email : '',
+            password : '',
+        })
+        }
+      
+    },err =>{
+        if(err.response.status === 409) alert(err.response.data.message)
+        else if(err.response.status === 400) alert(err.response.data.errors[0].msg)
+    
+    })
 }
 else if (param === 'login'){axios.post(process.env.REACT_APP_URL + '/post-login',form).then( res => {setForm({
     email : '',
     password : '',
 }
 )
-console.log(res)} 
+console.log(res)
+} 
 ,err =>alert(err) )
 }
      e.preventDefault()
