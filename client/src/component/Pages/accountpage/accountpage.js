@@ -1,4 +1,5 @@
 import './style.css'
+import Header from './../firstpage/header.js'
 import { useState } from 'react'
 import {AiFillCloseSquare} from 'react-icons/ai'
 import axios from 'axios'
@@ -16,7 +17,7 @@ const AccountPage = ()=>{
     }
     const submit = (e,param)=>{
     if(param ==='signup') {axios.post(process.env.REACT_APP_URL + '/post-signup',form).then( res => {
-        if(res.status === 200){ alert(res.data.message)
+        if(res.status === 201){ alert(res.data.message)
         setForm({
             email : '',
             password : '',
@@ -70,7 +71,7 @@ const login = (
        />
        <br/>
        <Button onClick ={(e)=>{
-           submit(e,'signup')
+           submit(e,'login')
        }} width = '25%' value = 'ورود'></Button>
      </form>
     </div>
@@ -119,6 +120,7 @@ else if (e === 'login'){
 }
     return (
         <>
+        <Header/>
          <div className = 'account-page-container' >
          <div onClick = {()=>{
            showDiv('signup')
