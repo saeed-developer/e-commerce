@@ -14,10 +14,10 @@ app.use('/',router)
 app.set('firstReq',true)
 const DB = process.env.DB 
 const Port = process.env.PORT || 3000
-mongoose.connect(DB, {useNewUrlParser : true , useUnifiedTopology : true})
+mongoose.connect(DB)
 .then(()=> app.listen(Port ,
     subscribers,
     urlCreator(), 
     console.log(`connected to database and server is listening on port ${Port}`)))
 .catch((err)=> console.log(err.message))
-mongoose.set('useFindAndModify',false)
+
