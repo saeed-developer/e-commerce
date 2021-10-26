@@ -18,7 +18,7 @@ const signUp = async(req,res)=>{
       console.log(hash)
       const newUser = new userModel({email : email,password:hash}) 
       await newUser.save()
-      res.json({message : 'شما با موفقیت ثبت نام کردید برای ورود به حساب کاربری از قسمت ورود اقدام نمایید'})
+      res.status(201).json({message : 'شما با موفقیت ثبت نام کردید برای ورود به حساب کاربری از قسمت ورود اقدام نمایید'})
     }
     else res.status(409).json({message : 'کاربری با این ایمیل هم اکنون وجود دارد!'})
     }
