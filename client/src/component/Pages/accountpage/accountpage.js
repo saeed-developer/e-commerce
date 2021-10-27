@@ -11,7 +11,7 @@ const AccountPage = ()=>{
         email : '',
         password : '',
     })
-    console.log(form)
+    
     const change = (e)=>{
         setForm({...form, [e.target.name] : e.target.value})
     }
@@ -30,11 +30,14 @@ const AccountPage = ()=>{
     
     })
 }
-else if (param === 'login'){axios.post(process.env.REACT_APP_URL + '/post-login',form).then( res => {setForm({
+else if (param === 'login'){axios.post(process.env.REACT_APP_URL + '/post-login',form).then( res => {
+    
+    if(res.status === 200){
+        alert('شما وارد شدید')
+    setForm({
     email : '',
-    password : '',
+    password : '',})
 }
-)
 console.log(res)
 } 
 ,err =>alert(err) )
@@ -76,6 +79,7 @@ const login = (
      </form>
     </div>
 )
+const [dataLogedIn , setDataLogedIn] = useState(false)
 const signup = (
     <div className = 'account-page-signup'>
      ثبت نام
@@ -118,10 +122,16 @@ else if (e === 'login'){
     setClick({...click,show : true ,login : true})
 }
 }
-    return (
-        <>
-        <Header/>
-         <div className = 'account-page-container' >
+const logedIn = (
+    <div>
+        <h1>
+          {dataLogedIn}
+        </h1>
+    </div>
+)
+const logedOut = (
+   <div>
+     <div className = 'account-page-container' >
          <div onClick = {()=>{
            showDiv('signup')
          }}>عضویت </div>
@@ -132,6 +142,16 @@ else if (e === 'login'){
          <div>
          {click.show ? click.login? login : signup : null}
          </div>
+    </div>  
+         )
+    return (
+        <>
+        <Header/>
+        {dataLogedIn ? logedIn :     
+         logedOut
+         }
+    
+
         </>
     )
 }
