@@ -11,7 +11,6 @@ const FirstPage = ()=>{
   isError && setInterval(()=>{
       refetch()
   },1000)
-  console.log(data)
     return(
         <>
        
@@ -19,9 +18,11 @@ const FirstPage = ()=>{
         <SlideShow/> 
         <PrimaryContent/>
         { isSuccess && data.map((item)=>{
-            if(item.section === 'content') return <SeconderyContent  content  = {<div dangerouslySetInnerHTML={{__html: item.content}} />}/>
-            if(item.section === 'footer') return <Footer content  = {<div dangerouslySetInnerHTML={{__html: item.content}} />}/>
-        })}
+            if(item.section === 'content') return <SeconderyContent key = {item._id}  content  = {<div dangerouslySetInnerHTML={{__html: item.content}} />}/>
+            else if (item.section === 'footer') return <Footer key = {item._id} content  = {<div dangerouslySetInnerHTML={{__html: item.content}} />}/>
+            return 0;
+        }
+        )}
         </>
     )
 }
