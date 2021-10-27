@@ -4,6 +4,7 @@ import {promisify} from 'util'
 import jsonwebtoken from  'jsonwebtoken'
 const jwtSign = promisify(jsonwebtoken.sign)
 export const login = async(req,res)=>{
+    console.log(req.body)
    const {email , password} = req.body
 try{
 const user = await userModel.find({email : email})
@@ -11,14 +12,14 @@ if(user.length == 0) res.status(404).json({message : 'کاربری با این �
 else {
     const pass = user[0].password
    const authenticated =  await bcrypt.compare(password,pass)
+   console.log(authenticated)
    if (authenticated) {
-    const user = {}
+   
     const token = await jwtSign({username : email},process.env.tokenKey,{
         expiresIn : "24h"
     })
-    user.token = token
-    res.status(200).json(user)
-
+    res.cookie('token', token, { httpOnly: true });
+    res.json({ token });
 }
    else res.status(401).json({message : 'گذرواژه شما اشتباه است'})
 }
