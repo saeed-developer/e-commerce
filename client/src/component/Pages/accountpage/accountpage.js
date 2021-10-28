@@ -6,14 +6,27 @@ import axios from 'axios'
 import { IconContext } from "react-icons"
 import Button from './../../../stories/button.js'
 const AccountPage = ()=>{
+   
     const [click , setClick] = useState({show : false , signup : false , login  : false })
     const [form , setForm ] = useState({
         email : '',
         password : '',
     })
-    
+    const [dataLogedIn , setDataLogedIn] = useState({isData : false , data :''})
     const change = (e)=>{
         setForm({...form, [e.target.name] : e.target.value})
+    }
+    const token  = localStorage.getItem('token')
+    if (token !== null && dataLogedIn.isData === false ){
+        console.log('tr')
+        axios.post(process.env.REACT_APP_URL + '/loged-in',{ token : token}).then(res => {
+            setDataLogedIn({isData : true , data : res.data.message})
+            
+        
+        } , err => {
+            setDataLogedIn({isData : false})
+            localStorage.clear()
+        })
     }
     const submit = (e,param)=>{
     if(param ==='signup') {axios.post(process.env.REACT_APP_URL + '/post-signup',form).then( res => {
@@ -33,6 +46,8 @@ const AccountPage = ()=>{
 else if (param === 'login'){axios.post(process.env.REACT_APP_URL + '/post-login',form).then( res => {
     
     if(res.status === 200){
+        console.log(res.data)
+        localStorage.setItem('token' , res.data.token)
         alert('شما وارد شدید')
     setForm({
     email : '',
@@ -79,7 +94,7 @@ const login = (
      </form>
     </div>
 )
-const [dataLogedIn , setDataLogedIn] = useState(false)
+
 const signup = (
     <div className = 'account-page-signup'>
      ثبت نام
@@ -124,9 +139,10 @@ else if (e === 'login'){
 }
 const logedIn = (
     <div>
-        <h1>
-          {dataLogedIn}
-        </h1>
+        <p style = {{direction : 'rtl' , textAlign : 'center',marginTop : '20%'}}> 
+          
+          {dataLogedIn.data} عزیز خوش اومدی
+        </p>
     </div>
 )
 const logedOut = (
@@ -147,7 +163,7 @@ const logedOut = (
     return (
         <>
         <Header/>
-        {dataLogedIn ? logedIn :     
+        {dataLogedIn.isData ? logedIn :     
          logedOut
          }
     
