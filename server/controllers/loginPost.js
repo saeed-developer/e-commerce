@@ -25,7 +25,7 @@ catch(err){
     res.json({message : err.message})
 }
 }
-export const logedIn = async(req,res)=>{
+export const loggedIn = async(req,res)=>{
 const {token} = req.body
 try{
 const isVerified = await jwtVerify(token , process.env.tokenKey)
@@ -33,6 +33,6 @@ const  decoded =  jsonwebtoken.decode(token);
 res.json({message : decoded.username})
 }
 catch (err) {
-res.status(404).json({message : err.message})
+res.status(401).json({message : err.message})
 }
 }
