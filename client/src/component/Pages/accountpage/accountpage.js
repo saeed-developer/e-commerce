@@ -2,6 +2,7 @@ import './style.css'
 import Header from './../firstpage/header.js'
 import { useState } from 'react'
 import {AiFillCloseSquare} from 'react-icons/ai'
+import { useEffect } from 'react'
 import axios from 'axios'
 import { IconContext } from "react-icons"
 import Button from './../../../stories/button.js'
@@ -12,22 +13,35 @@ const AccountPage = ()=>{
         email : '',
         password : '',
     })
-    const [dataLogedIn , setDataLogedIn] = useState({isData : false , data :''})
+    const [dataLogedIn , setDataLogedIn] = useState({isData : false , data :false})
     const change = (e)=>{
         setForm({...form, [e.target.name] : e.target.value})
     }
-    const token  = localStorage.getItem('token')
-    if (token !== null && dataLogedIn.isData === false ){
-        console.log('tr')
-        axios.post(process.env.REACT_APP_URL + '/loged-in',{ token : token}).then(res => {
+    useEffect(()=>{
+      const token  = localStorage.getItem('token')  
+   if (token !== null ){
+       
+        axios.post(process.env.REACT_APP_URL + '/logged-in',{ token : token}).then(res => {
             setDataLogedIn({isData : true , data : res.data.message})
-            
-        
+          
         } , err => {
-            setDataLogedIn({isData : false})
-            localStorage.clear()
+            setDataLogedIn({isData : false,data: false})
+            localStorage.clear() 
         })
     }
+    },[dataLogedIn.isData])
+    const loggedIn = (
+        <div className = 'account-page-logged-in' >
+            <p> 
+              {dataLogedIn.data} عزیز خوش اومدی
+            </p>
+            <Button value = 'خروج از حساب کاربری' width = '20%' onClick ={()=>{
+                localStorage.clear()
+                setDataLogedIn({isData : false , data: false})
+            }} />
+        </div>
+    )
+
     const submit = (e,param)=>{
     if(param ==='signup') {axios.post(process.env.REACT_APP_URL + '/post-signup',form).then( res => {
         if(res.status === 201){ alert(res.data.message)
@@ -46,14 +60,13 @@ const AccountPage = ()=>{
 else if (param === 'login'){axios.post(process.env.REACT_APP_URL + '/post-login',form).then( res => {
     
     if(res.status === 200){
-        console.log(res.data)
         localStorage.setItem('token' , res.data.token)
+        setDataLogedIn({isData : true,data:false})
         alert('شما وارد شدید')
     setForm({
     email : '',
     password : '',})
 }
-console.log(res)
 } 
 ,err =>alert(err) )
 }
@@ -137,15 +150,8 @@ else if (e === 'login'){
     setClick({...click,show : true ,login : true})
 }
 }
-const logedIn = (
-    <div>
-        <p style = {{direction : 'rtl' , textAlign : 'center',marginTop : '20%'}}> 
-          
-          {dataLogedIn.data} عزیز خوش اومدی
-        </p>
-    </div>
-)
-const logedOut = (
+
+const loggedOut = (
    <div>
      <div className = 'account-page-container' >
          <div onClick = {()=>{
@@ -160,11 +166,12 @@ const logedOut = (
          </div>
     </div>  
          )
+       
     return (
         <>
         <Header/>
-        {dataLogedIn.isData ? logedIn :     
-         logedOut
+        {dataLogedIn.isData ? loggedIn:     
+         loggedOut
          }
     
 
