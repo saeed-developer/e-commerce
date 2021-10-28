@@ -52,3 +52,11 @@ overflow: hidden;
 .account-page-signup-form > input{
     max-width: 50%;
 }
+.account-page-logged-in{
+    direction : rtl ;
+     display : flex ;
+      margin-top : 10% ; 
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+}
