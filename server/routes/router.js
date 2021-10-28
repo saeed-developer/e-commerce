@@ -12,7 +12,7 @@ import { getCities } from '../controllers/citiesGet.js'
 import {postOrder} from '../controllers/orderPost.js'
 import { postContent } from '../controllers/contentPost.js'
 import { getContent } from '../controllers/contentGet.js'
-import { login , logedIn } from '../controllers/loginPost.js'
+import { login , loggedIn } from '../controllers/loginPost.js'
 import signUp from '../controllers/signupPost.js'
 import ratelimit from 'express-rate-limit'
 
@@ -37,5 +37,5 @@ router.post('/post-content',postContent)
 router.get('/get-content',getContent)
 router.post('/post-signup',userValidator,signUp)
 router.post('/post-login',login)
-router.post('/loged-in',logedIn)
+router.post('/logged-in',loggedIn)
 export default router
