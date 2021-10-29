@@ -1,7 +1,7 @@
 import contentModel from "../models/content.js";
-export const postContent  = async(req,res)=>{
-    
-  const apiKey =   req.get('authorization')
+export const postContent  = async(req,res)=>{   
+
+    const apiKey =   req.get('authorization')
   const data = req.body
   
 try{
