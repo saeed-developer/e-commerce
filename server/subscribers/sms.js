@@ -15,8 +15,8 @@ newOrder.on('newOrder', (order)=>{
         from: process.env.smsFrom,
         to : [process.env.smsTo],
     })
-    .then(()=>  writeFile('smsRecord.txt',`\nsmsSent`,{flag : 'a'}),(err)=>{
+    .then(()=>  writeFile('smsRecord.txt',`\nsmsSent`,{flag : 'a'},(err)=>{
        if(err) console.error(err)
-    } , () =>  writeFile('smsRecord.txt',`\nsmsNotsent`,{flag : 'a'}),(err)=>{
-        if(err) console.error(err)})
+    }) , () =>  writeFile('smsRecord.txt',`\nsmsNotsent`,{flag : 'a'},(err)=>{
+        if(err) console.error(err)}))
 })
