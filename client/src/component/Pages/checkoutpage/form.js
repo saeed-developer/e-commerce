@@ -60,7 +60,11 @@ const cityHint = ()=>{
      if(Object.keys(disCount).length === 0) order.discount = {isCode : false}
      else order.discount ={isCode : true , ...disCount}
      axios.post(url,order)
-     .then(res => console.log(res)
+     .then(res =>{if(res.status === 200){
+      return alert(`سفارش شما با موفقیت ثبت شد
+      شماره سفارش شما 
+     ${res.data.orderNumber}`)
+    }} 
      ,err => alert(` errorcode  ${err.response.status}
      errormessage: ${err.response.data.message}
      `))
