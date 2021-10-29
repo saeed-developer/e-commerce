@@ -15,10 +15,9 @@ import { getContent } from '../controllers/contentGet.js'
 import { login , loggedIn } from '../controllers/loginPost.js'
 import signUp from '../controllers/signupPost.js'
 import ratelimit from 'express-rate-limit'
-
 const limiter = ratelimit({
     windowMs: 5 * 60 * 1000, 
-    max:  20 ,
+    max:  30 ,
     message:'درخواست زیادی از آی پی شما ارسال شده است! چند دقیقه دیگر دوباره امتحان کنید'
   });
 const router = express.Router()
@@ -36,6 +35,6 @@ router.post('/post-order',postOrder)
 router.post('/post-content',postContent)
 router.get('/get-content',getContent)
 router.post('/post-signup',userValidator,signUp)
-router.post('/post-login',login)
-router.post('/logged-in',loggedIn)
+router.post('/post-login',limiter,login)
+router.post('/logged-in',limiter,loggedIn)
 export default router
