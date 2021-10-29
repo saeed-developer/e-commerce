@@ -1,6 +1,4 @@
 import orderModel from "../models/order.js";
-import productModel from '../models/products.js';
-import discountCodeModel from "../models/discountCode.js";
 import {app} from './../app.js'
 import { newOrder } from "../subscribers/sms.js";
 export const postOrder = async(req,res)=>{
