@@ -10,14 +10,13 @@ import productModel from "../models/products.js";
         await urlModel.insertMany(urlList)
         console.log('product\'s paths Created')
     }
-    // I Should create condition for find new product if there was any and then create path for it
     else  {
        
         return  
     } 
 }  
 catch(err){
-    console.log({message : err.message})
+    console.log(err.message)
 }
 }
 function nameToUrl(items,basePath){
